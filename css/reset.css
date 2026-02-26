@@ -68,20 +68,36 @@ p {
   overflow-wrap: break-word;
 }
 
-/* 滚动条样式 */
+/* 滚动条样式 — 不滚动时自动隐藏 */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-primary);
+  background: rgba(99, 102, 241, 0);
   border-radius: 3px;
+  transition: background 0.3s ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
+/* 滚动时显示 */
+html.is-scrolling::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+}
+
+html.is-scrolling::-webkit-scrollbar-thumb:hover {
   background: var(--accent-secondary);
+}
+
+/* Firefox 支持 */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+html.is-scrolling {
+  scrollbar-color: var(--accent-primary) transparent;
 }

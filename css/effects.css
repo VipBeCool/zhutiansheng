@@ -105,8 +105,8 @@
 }
 
 .terminal-window {
-    width: min(800px, 90vw);
-    max-height: 70vh;
+    width: min(850px, 90vw);
+    max-height: 580px;
     background: #0d1117;
     border: 1px solid rgba(79, 70, 229, 0.3);
     border-radius: 12px;

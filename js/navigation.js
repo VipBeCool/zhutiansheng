@@ -29,6 +29,16 @@
         }
 
         window.addEventListener('scroll', onScroll, { passive: true });
+
+        // 滚动条自动隐藏：滚动时显示，停止 1.2s 后淡出
+        let scrollbarTimer = null;
+        window.addEventListener('scroll', function () {
+            document.documentElement.classList.add('is-scrolling');
+            clearTimeout(scrollbarTimer);
+            scrollbarTimer = setTimeout(function () {
+                document.documentElement.classList.remove('is-scrolling');
+            }, 1200);
+        }, { passive: true });
     }
 
     // === 移动端菜单切换 ===

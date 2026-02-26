@@ -30,7 +30,7 @@
             desc: '个人介绍',
             run: () => [
                 '',
-                '  <span class="cmd-accent">朱天胜 (Kevin Zhu)</span>',
+                '  <span class="cmd-accent">朱天胜 (Erick Zhu)</span>',
                 '  ──────────────────────',
                 '  <span class="cmd-info">职位：</span>   资深产品经理 / AI+FinTech Product Architect',
                 '  <span class="cmd-info">经验：</span>   14+ 年行业经验',
@@ -215,7 +215,7 @@
     // 欢迎信息
     const WELCOME = [
         '<span class="cmd-accent">╔══════════════════════════════════════════════════╗</span>',
-        '<span class="cmd-accent">║</span>  <span class="cmd-text">Kevin Zhu · AI+FinTech Product Architect</span>        <span class="cmd-accent">║</span>',
+        '<span class="cmd-accent">║</span>  <span class="cmd-text">Erick Zhu · AI+FinTech Product Architect</span>        <span class="cmd-accent">║</span>',
         '<span class="cmd-accent">║</span>  <span class="cmd-info">欢迎来到我的终端！输入 help 查看可用命令。</span>      <span class="cmd-accent">║</span>',
         '<span class="cmd-accent">╚══════════════════════════════════════════════════╝</span>',
         ''

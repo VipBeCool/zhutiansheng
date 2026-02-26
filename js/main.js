@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 控制台欢迎信息
-    console.log('%c🚀 Kevin Zhu · AI+FinTech Product Architect',
+    console.log('%c🚀 Erick Zhu · AI+FinTech Product Architect',
         'color: #4F46E5; font-size: 16px; font-weight: bold;');
     console.log('%c本站由产品经理独立设计与开发 · 按 Ctrl+` 打开终端彩蛋',
         'color: #06B6D4; font-size: 12px;');

@@ -1,0 +1,34 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 去除紫调的科技蓝到极光青色渐变 -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" /> <!-- 科技蓝 (Blue 600) -->
+      <stop offset="100%" stop-color="#06B6D4" /> <!-- 青蓝 (Cyan 500) -->
+    </linearGradient>
+
+    <!-- Z 字母的高级内发光/玻璃质感渐变 -->
+    <linearGradient id="zGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#F1F5F9" />
+      <stop offset="100%" stop-color="#E0F2FE" />
+    </linearGradient>
+
+    <!-- 高级悬浮阴影 -->
+    <filter id="premiumShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- 带完美圆角的底板壳体 -->
+  <rect width="100" height="100" rx="22" fill="url(#bgGradient)" />
+
+  <!-- 极简、流线型的连续倒角粗线条 Z 
+       宽度居中，高度完美比例 -->
+  <path d="M 32 28 L 68 28 L 32 72 L 68 72" 
+        fill="none" 
+        stroke="url(#zGradient)" 
+        stroke-width="14" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        filter="url(#premiumShadow)" />
+</svg>

@@ -137,24 +137,30 @@
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid rgba(79, 70, 229, 0.25);
-    background: rgba(15, 15, 36, 0.4);
-    backdrop-filter: blur(8px);
+    gap: 6px;
     color: var(--accent-secondary, #06B6D4);
     text-decoration: none;
     animation: heroScrollPulse 2.4s ease-in-out infinite;
     cursor: pointer;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: opacity 0.3s;
+}
+
+.hero-scroll-text {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: rgba(240, 240, 245, 0.5);
 }
 
 .hero-scroll:hover {
-    border-color: var(--accent-primary, #4F46E5);
-    box-shadow: 0 0 16px rgba(79, 70, 229, 0.3);
+    opacity: 1;
+}
+
+.hero-scroll:hover .hero-scroll-text {
+    color: rgba(240, 240, 245, 0.8);
 }
 
 @keyframes heroScrollPulse {
@@ -442,7 +448,7 @@
 #about.show-work .sil-life {
     right: 50%;
     transform: translateX(120%) translateZ(-80px) scale(0.92);
-    filter: brightness(0.25) blur(3px);
+    filter: brightness(0.12) blur(3px);
     z-index: 2;
 }
 
@@ -457,7 +463,7 @@
 #about.show-life .sil-work {
     left: 50%;
     transform: translateX(-120%) translateZ(-80px) scale(0.92);
-    filter: brightness(0.25) blur(3px);
+    filter: brightness(0.12) blur(3px);
     z-index: 2;
 }
 
@@ -628,51 +634,52 @@
    Skills Grid — 紧凑布局，两排一屏展示
    ============================ */
 #skills {
-    padding: 120px 0 40px;
+    padding: 120px 0 80px;
 }
 
 #skills .section-header {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 .skills-grid {
-    gap: 20px 24px !important;
+    gap: 32px !important;
 }
 
 .skills-grid .bento-card {
     display: flex;
     flex-direction: column;
-    padding: 28px 28px 24px;
-    min-height: 200px;
+    padding: 36px 36px 32px;
+    min-height: 260px;
 }
 
 .skills-grid .bento-card .card-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    margin-bottom: 12px;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .skills-grid .bento-card .card-title {
-    font-size: 16px;
-    margin-bottom: 6px;
+    font-size: 18px;
+    margin-bottom: 8px;
 }
 
 .skills-grid .bento-card .card-description {
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: 14.5px;
+    line-height: 1.7;
+    margin-bottom: 24px;
 }
 
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 12px;
+    gap: 8px;
+    /* 去除了 margin-top: auto 避免标签被强行推到最底端导致文字间断层过大 */
 }
 
 .skill-tags .tag {
-    font-size: 12px;
-    padding: 2px 10px;
+    font-size: 12.5px;
+    padding: 4px 12px;
 }
 
 /* ============================
@@ -712,19 +719,109 @@
 }
 
 /* ============================
-   Contact Grid
+   Contact 联系方式
    ============================ */
-.contact-grid .contact-card {
+
+/* 两列布局：左列邮箱+电话，右列微信 */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+/* 左列：邮箱 + 电话 纵向堆叠 */
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+/* 通用卡片样式 */
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    padding: var(--space-xl) var(--space-lg);
+    border-radius: var(--radius-xl);
+    background: var(--bg-glass);
+    border: 1px solid var(--border-card);
+    transition: var(--transition-base);
+    flex: 1;
 }
 
-.contact-grid .card-title {
+.contact-card:hover {
+    background: var(--bg-glass-hover);
+    border-color: rgba(79, 70, 229, 0.2);
+    transform: translateY(-4px);
+}
+
+.contact-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.contact-card .card-title {
     font-size: var(--text-lg);
-    margin-bottom: var(--space-sm);
+    margin-bottom: 8px;
 }
 
-.contact-grid .card-description {
+/* 邮箱/电话链接 */
+.contact-link {
     font-size: var(--text-base);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-link:hover {
+    color: var(--accent-primary);
+}
+
+/* 微信卡片 — 右列撑满 */
+.contact-wechat {
+    justify-content: center;
+}
+
+.wechat-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.wechat-qr {
+    width: 140px;
+    height: 140px;
+    padding: 10px;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: var(--radius-md);
+    border: 2px solid rgba(79, 70, 229, 0.15);
+    object-fit: contain;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.contact-wechat:hover .wechat-qr {
+    transform: scale(1.05);
+    border-color: rgba(79, 70, 229, 0.4);
+}
+
+.wechat-id {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    font-family: var(--font-mono, monospace);
+    letter-spacing: 0.5px;
+}
+
+/* 移动端适配 */
+@media (max-width: 640px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ============================
