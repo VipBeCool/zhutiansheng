@@ -1,0 +1,166 @@
+/* ============================================
+   布局系统 — 容器、网格、Section
+   ============================================ */
+
+/* === 容器 === */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+/* === Section === */
+.section {
+    position: relative;
+    padding: var(--section-padding) 0;
+    overflow: hidden;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-4xl);
+}
+
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--accent-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: var(--space-lg);
+    padding: var(--space-xs) var(--space-lg);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    border-radius: var(--radius-full);
+    background: rgba(6, 182, 212, 0.05);
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: var(--text-5xl);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: var(--space-lg);
+    line-height: 1.1;
+}
+
+.section-title .gradient-text {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* === Bento 网格 === */
+.bento-grid {
+    display: grid;
+    gap: var(--space-lg);
+}
+
+.bento-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.bento-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.bento-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* 跨列 */
+.col-span-2 {
+    grid-column: span 2;
+}
+
+.col-span-3 {
+    grid-column: span 3;
+}
+
+.row-span-2 {
+    grid-row: span 2;
+}
+
+/* === Flex 工具类 === */
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.gap-sm {
+    gap: var(--space-sm);
+}
+
+.gap-md {
+    gap: var(--space-md);
+}
+
+.gap-lg {
+    gap: var(--space-lg);
+}
+
+.gap-xl {
+    gap: var(--space-xl);
+}
+
+/* === 分割线 === */
+.divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border-subtle);
+    margin: var(--space-3xl) 0;
+}
+
+/* === 响应式网格 === */
+@media (max-width: 1024px) {
+    .bento-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bento-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .bento-grid-2,
+    .bento-grid-3,
+    .bento-grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .col-span-2,
+    .col-span-3 {
+        grid-column: span 1;
+    }
+}

@@ -1,0 +1,66 @@
+[
+    {
+        "date": "2025-02-13",
+        "content": "CSS `clip-path` 配合伪元素可以实现非常惊艳的 Glitch 文字故障效果，关键是用两个伪元素分别做红/青色偏移。",
+        "tags": [
+            "前端",
+            "CSS"
+        ]
+    },
+    {
+        "date": "2025-02-12",
+        "content": "发现 Claude 3.5 在结构化输出（JSON mode）上比 GPT-4 更稳定，特别是嵌套层级较深时，幻觉率明显更低。",
+        "tags": [
+            "AI",
+            "Prompt"
+        ]
+    },
+    {
+        "date": "2025-02-11",
+        "content": "Cursor 的 Agent 模式真的好用！可以让 AI 自主决定要读哪些文件、做哪些改动，而不是每一步都需要手动指定。",
+        "tags": [
+            "工具",
+            "AI"
+        ]
+    },
+    {
+        "date": "2025-02-10",
+        "content": "Dify 的 Workflow 节点现在支持条件分支和循环了，可以实现更复杂的 Agent 逻辑，不再需要写代码胶水。",
+        "tags": [
+            "AI",
+            "Agent"
+        ]
+    },
+    {
+        "date": "2025-02-09",
+        "content": "产品经理做 POC 的最大价值不是代码本身，而是通过实际构建来验证想法可行性，这个过程本身就能发现 PRD 中的盲区。",
+        "tags": [
+            "产品",
+            "思考"
+        ]
+    },
+    {
+        "date": "2025-02-08",
+        "content": "requestAnimationFrame + 对象池是前端粒子动画的标配方案。50个粒子完全不会影响帧率，比 setTimeout 流畅太多。",
+        "tags": [
+            "前端",
+            "性能"
+        ]
+    },
+    {
+        "date": "2025-02-07",
+        "content": "RAG 中的 Chunk 划分策略对检索质量影响巨大。按语义段落切分 + 重叠窗口的效果远好于简单的固定长度切分。",
+        "tags": [
+            "AI",
+            "RAG"
+        ]
+    },
+    {
+        "date": "2025-02-06",
+        "content": "Figma 的 Auto Layout + Component Properties 组合使用，可以让设计系统的维护成本降低 80%。一改全改，真正的 Single Source of Truth。",
+        "tags": [
+            "设计",
+            "Figma"
+        ]
+    }
+]

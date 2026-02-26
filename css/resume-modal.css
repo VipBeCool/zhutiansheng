@@ -1,0 +1,243 @@
+/* ===========================
+   简历弹窗样式
+   =========================== */
+
+/* 遮罩层 */
+.resume-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.resume-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 弹窗容器 */
+.resume-modal {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 36px 32px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.resume-modal-overlay.active .resume-modal {
+    transform: scale(1) translateY(0);
+}
+
+/* 关闭按钮 */
+.resume-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: var(--bg-tertiary);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1;
+}
+
+.resume-modal-close:hover {
+    background: var(--accent-primary);
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* 标题 */
+.resume-modal-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+/* 分区 */
+.resume-modal-section {
+    margin-bottom: 4px;
+}
+
+.resume-modal-section-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.resume-modal-section-desc {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+}
+
+/* 口令输入行 */
+.resume-modal-code-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.resume-modal-code-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 6px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.resume-modal-code-input:focus {
+    border-color: var(--accent-primary);
+}
+
+.resume-modal-code-input::placeholder {
+    font-size: 0.85rem;
+    letter-spacing: 0;
+    font-weight: 400;
+    color: var(--text-tertiary);
+}
+
+.resume-modal-code-btn {
+    padding: 10px 20px;
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: filter 0.2s, transform 0.2s;
+}
+
+.resume-modal-code-btn:hover {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+}
+
+/* 口令提示文字 */
+.resume-modal-code-hint {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 2px;
+}
+
+/* 验证消息 */
+.resume-modal-code-msg {
+    font-size: 0.8rem;
+    min-height: 20px;
+    transition: color 0.2s;
+}
+
+.resume-modal-code-msg.success {
+    color: #22c55e;
+}
+
+.resume-modal-code-msg.error {
+    color: #ef4444;
+}
+
+/* 分隔线 */
+.resume-modal-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+    color: var(--text-tertiary);
+    font-size: 0.8rem;
+}
+
+.resume-modal-divider::before,
+.resume-modal-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-subtle);
+}
+
+/* 二维码容器 */
+.resume-modal-qr {
+    width: 160px;
+    height: 160px;
+    margin: 10px auto;
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.resume-modal-qr img,
+.resume-modal-qr svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 提示文字 */
+.resume-modal-hint {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+}
+
+.resume-modal-hint span {
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+/* 查看联系方式按钮 */
+.resume-modal-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    padding: 7px 18px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    background: rgba(99, 102, 241, 0.08);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 10px;
+    transition: all 0.25s ease;
+}
+
+.resume-modal-contact:hover {
+    color: #818cf8;
+    background: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.4);
+}

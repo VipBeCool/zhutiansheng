@@ -1,0 +1,613 @@
+/* ============================================
+   effects.css — 交互增强样式
+   ============================================ */
+
+/* ============================
+   滚动进度条
+   ============================ */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, #4F46E5, #06B6D4, #8B5CF6, #EC4899);
+    background-size: 300% 100%;
+    animation: gradient-flow 4s ease infinite;
+    z-index: 10001;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px rgba(79, 70, 229, 0.5), 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+/* ============================
+   3D 倾斜卡片光泽
+   ============================ */
+.project-card,
+.bento-card,
+.stat-item {
+    --glare-x: 50%;
+    --glare-y: 50%;
+    transition: transform 0.3s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+    transform-style: preserve-3d;
+}
+
+.project-card::after,
+.bento-card::after,
+.stat-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at var(--glare-x) var(--glare-y),
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 60%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.project-card:hover::after,
+.bento-card:hover::after,
+.stat-item:hover::after {
+    opacity: 1;
+}
+
+/* ============================
+   鼠标跟随光晕（保留默认光标）
+   ============================ */
+.cursor-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.06) 0%, rgba(6, 182, 212, 0.03) 30%, transparent 60%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease, background 0.4s ease;
+    mix-blend-mode: screen;
+}
+
+.cursor-glow.cursor-hover {
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.09) 0%, rgba(6, 182, 212, 0.04) 30%, transparent 60%);
+}
+
+/* 移动端隐藏 */
+@media (pointer: coarse) {
+    .cursor-glow {
+        display: none !important;
+    }
+}
+
+/* ============================
+   命令行终端
+   ============================ */
+.terminal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.terminal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.terminal-window {
+    width: min(800px, 90vw);
+    max-height: 70vh;
+    background: #0d1117;
+    border: 1px solid rgba(79, 70, 229, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(79, 70, 229, 0.1);
+    display: flex;
+    flex-direction: column;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.terminal-overlay.active .terminal-window {
+    transform: translateY(0) scale(1);
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #161b22;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-dot.red {
+    background: #ff5f56;
+}
+
+.terminal-dot.yellow {
+    background: #ffbd2e;
+}
+
+.terminal-dot.green {
+    background: #27c93f;
+}
+
+.terminal-title {
+    flex: 1;
+    text-align: center;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+}
+
+.terminal-body {
+    padding: 16px;
+    overflow-y: auto;
+    flex: 1;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #c9d1d9;
+    min-height: 300px;
+    max-height: calc(70vh - 60px);
+}
+
+.terminal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background: rgba(79, 70, 229, 0.3);
+    border-radius: 3px;
+}
+
+.terminal-output-line {
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.terminal-output-line .cmd-prompt {
+    color: #8B5CF6;
+}
+
+.terminal-output-line .cmd-user {
+    color: #06B6D4;
+}
+
+.terminal-output-line .cmd-dir {
+    color: #4F46E5;
+}
+
+.terminal-output-line .cmd-text {
+    color: #27c93f;
+}
+
+.terminal-output-line .cmd-info {
+    color: #c9d1d9;
+}
+
+.terminal-output-line .cmd-warn {
+    color: #ffbd2e;
+}
+
+.terminal-output-line .cmd-error {
+    color: #ff5f56;
+}
+
+.terminal-output-line .cmd-accent {
+    color: #06B6D4;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.terminal-input-line .prompt {
+    color: #8B5CF6;
+    white-space: nowrap;
+}
+
+.terminal-input-line .user-at {
+    color: #06B6D4;
+    white-space: nowrap;
+}
+
+.terminal-input-line .dir-path {
+    color: #4F46E5;
+    white-space: nowrap;
+}
+
+.terminal-input-line .dollar {
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: 8px;
+    white-space: nowrap;
+}
+
+.terminal-input {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #c9d1d9;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    caret-color: #8B5CF6;
+}
+
+/* 终端提示快捷键 */
+.terminal-hint {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(13, 17, 23, 0.9);
+    border: 1px solid rgba(79, 70, 229, 0.3);
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.5s ease 3s both;
+}
+
+.terminal-hint:hover {
+    border-color: rgba(79, 70, 229, 0.6);
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(79, 70, 229, 0.15);
+}
+
+.terminal-hint kbd {
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    font-size: 10px;
+}
+
+/* ============================
+   项目横向滚动
+   ============================ */
+.projects-horizontal-wrapper {
+    position: relative;
+    overflow: visible;
+    padding: 20px 10px;
+    margin: -20px -10px;
+    clip-path: inset(-20px -10px -20px -10px);
+}
+
+.projects-horizontal-track {
+    display: flex;
+    gap: var(--space-lg, 24px);
+    cursor: grab;
+    user-select: none;
+    padding-bottom: var(--space-lg, 24px);
+    transition: transform 0.1s ease-out;
+}
+
+.projects-horizontal-track:active {
+    cursor: grabbing;
+}
+
+.projects-horizontal-track .project-card {
+    flex: 0 0 min(500px, 80vw);
+    min-height: 420px;
+}
+
+.projects-horizontal-track .project-card.col-span-2 {
+    flex: 0 0 min(680px, 85vw);
+    grid-column: unset;
+}
+
+/* 滚动指示器 */
+.scroll-indicator-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: var(--space-lg, 24px);
+}
+
+.scroll-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.scroll-dot.active {
+    background: var(--accent-primary, #4F46E5);
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* 导航行：箭头 + 指示点 */
+.scroll-nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: var(--space-lg, 24px);
+}
+
+/* 左右箭头按钮 — 小型内联 */
+.scroll-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.scroll-arrow:hover {
+    border-color: rgba(79, 70, 229, 0.5);
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(79, 70, 229, 0.1);
+}
+
+.scroll-arrow.hidden {
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.scroll-nav-row .scroll-indicator-dots {
+    margin-top: 0;
+}
+
+/* 横滚拖拽提示 */
+.drag-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 13px;
+    margin-top: var(--space-sm, 8px);
+}
+
+.drag-hint svg {
+    animation: float-horizontal 2s ease-in-out infinite;
+}
+
+@keyframes float-horizontal {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(8px);
+    }
+}
+
+/* 移动端隐藏终端提示 */
+@media (max-width: 768px) {
+    .terminal-hint {
+        display: none;
+    }
+
+    .projects-horizontal-track .project-card {
+        flex: 0 0 85vw;
+    }
+
+    .projects-horizontal-track .project-card.col-span-2 {
+        flex: 0 0 85vw;
+    }
+}
+
+/* ============================
+   Glitch 文字故障效果
+   ============================ */
+.glitch {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.glitch::before {
+    color: #ff006e;
+    z-index: -1;
+}
+
+.glitch::after {
+    color: #00f5ff;
+    z-index: -1;
+}
+
+.glitch:hover::before {
+    opacity: 0.8;
+    animation: glitch-1 0.3s cubic-bezier(.25, .46, .45, .94) infinite;
+}
+
+.glitch:hover::after {
+    opacity: 0.8;
+    animation: glitch-2 0.3s cubic-bezier(.25, .46, .45, .94) infinite reverse;
+}
+
+@keyframes glitch-1 {
+    0% {
+        clip-path: inset(40% 0 61% 0);
+        transform: translate(-2px, -1px);
+    }
+
+    20% {
+        clip-path: inset(92% 0 1% 0);
+        transform: translate(1px, 3px);
+    }
+
+    40% {
+        clip-path: inset(43% 0 1% 0);
+        transform: translate(-1px, -2px);
+    }
+
+    60% {
+        clip-path: inset(25% 0 58% 0);
+        transform: translate(3px, 1px);
+    }
+
+    80% {
+        clip-path: inset(54% 0 7% 0);
+        transform: translate(-3px, 2px);
+    }
+
+    100% {
+        clip-path: inset(58% 0 43% 0);
+        transform: translate(2px, -3px);
+    }
+}
+
+@keyframes glitch-2 {
+    0% {
+        clip-path: inset(65% 0 13% 0);
+        transform: translate(3px, 1px);
+    }
+
+    20% {
+        clip-path: inset(15% 0 62% 0);
+        transform: translate(-2px, -3px);
+    }
+
+    40% {
+        clip-path: inset(79% 0 2% 0);
+        transform: translate(1px, 2px);
+    }
+
+    60% {
+        clip-path: inset(36% 0 8% 0);
+        transform: translate(-3px, -1px);
+    }
+
+    80% {
+        clip-path: inset(3% 0 46% 0);
+        transform: translate(2px, 3px);
+    }
+
+    100% {
+        clip-path: inset(42% 0 30% 0);
+        transform: translate(-1px, -2px);
+    }
+}
+
+/* Glitch 悬浮时额外闪烁线条 */
+.glitch:hover {
+    text-shadow:
+        0 0 2px rgba(255, 0, 110, 0.3),
+        0 0 4px rgba(0, 245, 255, 0.3);
+    animation: glitch-skew 0.5s infinite;
+}
+
+@keyframes glitch-skew {
+    0% {
+        transform: skew(0deg);
+    }
+
+    20% {
+        transform: skew(-0.5deg);
+    }
+
+    40% {
+        transform: skew(0.5deg);
+    }
+
+    60% {
+        transform: skew(-0.3deg);
+    }
+
+    80% {
+        transform: skew(0.2deg);
+    }
+
+    100% {
+        transform: skew(0deg);
+    }
+}
+
+/* ============================
+   Spotlight 聚光灯效果
+   ============================ */
+.spotlight-container {
+    position: relative;
+}
+
+.spotlight-mask {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle 250px at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+            transparent 0%,
+            rgba(0, 0, 0, 0.65) 70%,
+            rgba(0, 0, 0, 0.85) 100%);
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.spotlight-container:hover .spotlight-mask {
+    opacity: 1;
+}
+
+.spotlight-container .bento-card {
+    position: relative;
+    z-index: 6;
+}
+
+/* 移动端禁用 Spotlight */
+@media (pointer: coarse) {
+    .spotlight-mask {
+        display: none !important;
+    }
+}
+
+/* 粒子拖尾已改用 Canvas 实现，无需 DOM 样式 */

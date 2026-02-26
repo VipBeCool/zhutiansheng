@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="朱天胜个人网站更新日志">
+    <title>更新日志 · Kevin Zhu</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/variables.css?v=v3">
+    <link rel="stylesheet" href="css/reset.css?v=v3">
+    <link rel="stylesheet" href="css/layout.css?v=v3">
+    <link rel="stylesheet" href="css/components.css?v=v3">
+    <link rel="stylesheet" href="css/animations.css?v=v3">
+    <link rel="stylesheet" href="css/pages.css?v=v3">
+    <link rel="stylesheet" href="css/effects.css?v=v3">
+    <link rel="stylesheet" href="css/resume-modal.css?v=v3">
+
+    <style>
+        /* Changelog 页面样式 */
+        .changelog-hero {
+            padding: 120px 0 20px;
+            text-align: center;
+        }
+
+        .changelog-main {
+            padding-bottom: 80px;
+        }
+
+        .changelog-timeline {
+            position: relative;
+            padding-left: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 时间线竖线 */
+        .changelog-timeline::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg,
+                    rgba(79, 70, 229, 0.6) 0%,
+                    rgba(6, 182, 212, 0.3) 50%,
+                    rgba(79, 70, 229, 0.1) 100%);
+        }
+
+        /* 单条版本 */
+        .changelog-entry {
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        /* 节点圆点 */
+        .changelog-entry::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4F46E5;
+            border: 3px solid #0d1117;
+            box-shadow: 0 0 12px rgba(79, 70, 229, 0.5);
+        }
+
+        /* 最新版本高亮 */
+        .changelog-entry:first-child::before {
+            background: #06B6D4;
+            width: 14px;
+            height: 14px;
+            left: -35px;
+            top: 5px;
+            box-shadow: 0 0 16px rgba(6, 182, 212, 0.6);
+        }
+
+        .changelog-version {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(79, 70, 229, 0.15);
+            border: 1px solid rgba(79, 70, 229, 0.3);
+            border-radius: 20px;
+            font-family: 'JetBrains Mono', 'SF Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            color: #8B5CF6;
+        }
+
+        .changelog-entry:first-child .version-badge {
+            background: rgba(6, 182, 212, 0.15);
+            border-color: rgba(6, 182, 212, 0.3);
+            color: #06B6D4;
+        }
+
+        .version-date {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .changelog-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .changelog-items li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.6;
+        }
+
+        .changelog-items li .cl-icon {
+            flex-shrink: 0;
+            font-size: 15px;
+            margin-top: 2px;
+        }
+
+        .cl-tag {
+            display: inline-block;
+            font-size: 10px;
+            padding: 1px 6px;
+            border-radius: 6px;
+            background: rgba(79, 70, 229, 0.15);
+            color: rgba(255, 255, 255, 0.5);
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .changelog-hero {
+                padding: 120px 0 40px;
+            }
+
+            .changelog-timeline {
+                padding-left: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="container flex-between">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">Z</span>
+                <span>KEVIN ZHU</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#about" class="nav-link">关于我</a>
+                <a href="index.html#career" class="nav-link">职业旅程</a>
+                <a href="index.html#projects" class="nav-link">项目案例</a>
+                <a href="index.html#skills" class="nav-link">技能矩阵</a>
+                <a href="uses.html" class="nav-link">工具箱</a>
+                <a href="blog.html" class="nav-link">博客</a>
+                <a href="guestbook.html" class="nav-link">留言墙</a>
+                <a href="changelog.html" class="nav-link active">更新日志</a>
+                <a href="index.html#contact" class="nav-link">联系方式</a>
+                <a href="#" class="nav-cta">获取简历</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="changelog-hero">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">✦ Changelog</span>
+                <h1 class="section-title">网站 <span class="gradient-text">更新日志</span></h1>
+                <p class="section-subtitle">记录这个网站的每一次进化 — 这本身就是一个产品迭代的过程</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 时间线 -->
+    <main class="changelog-main">
+        <div class="container">
+            <div class="changelog-timeline">
+
+                <!-- v3.0 -->
+                <div class="changelog-entry reveal">
+                    <div class="changelog-version">
+                        <span class="version-badge">v3.0</span>
+                        <span class="version-date">2025.02.13</span>
+                    </div>
+                    <ul class="changelog-items">
+                        <li><span class="cl-icon">🆕</span> 新增工具箱 /Uses 页面 — 展示日常 AI/开发/设计/效率工具链 <span
+                                class="cl-tag">新页面</span></li>
+                        <li><span class="cl-icon">📚</span> 新增书架模块 — 3D 翻书效果 + 星级评分 + 读书感悟 <span
+                                class="cl-tag">新功能</span></li>
+                        <li><span class="cl-icon">📝</span> 新增 TIL 碎片笔记 — 博客页"碎片"Tab，每日学习短记录 <span
+                                class="cl-tag">新功能</span></li>
+                        <li><span class="cl-icon">🎮</span> 新增 Konami Code 贪吃蛇彩蛋 — ↑↑↓↓←→←→BA <span
+                                class="cl-tag">彩蛋</span></li>
+                        <li><span class="cl-icon">✨</span> 新增 Glitch 文字故障效果 — Hero 标题赛博朋克闪烁 <span
+                                class="cl-tag">视觉</span></li>
+                        <li><span class="cl-icon">🔦</span> 新增 Spotlight 聚光灯 — 技能区域暗室鼠标照亮效果 <span
+                                class="cl-tag">交互</span></li>
+                        <li><span class="cl-icon">🌟</span> 新增鼠标粒子拖尾 — 星光粒子轨迹 <span class="cl-tag">视觉</span></li>
+                        <li><span class="cl-icon">📜</span> 新增本页面 — 网站更新日志 <span class="cl-tag">meta</span></li>
+                    </ul>
+                </div>
+
+                <!-- v2.0 -->
+                <div class="changelog-entry reveal delay-100">
+                    <div class="changelog-version">
+                        <span class="version-badge">v2.0</span>
+                        <span class="version-date">2025.02.13</span>
+                    </div>
+                    <ul class="changelog-items">
+                        <li><span class="cl-icon">🆕</span> 新增博客模块 — 文章列表 + 标签筛选 + 搜索 + Markdown 渲染 <span
+                                class="cl-tag">新功能</span></li>
+                        <li><span class="cl-icon">💻</span> 新增命令行终端彩蛋 — Ctrl+` 打开仿终端，支持 10+ 命令 <span
+                                class="cl-tag">彩蛋</span></li>
+                        <li><span class="cl-icon">📊</span> 新增滚动进度条 — 页面顶部渐变进度指示 <span class="cl-tag">交互</span></li>
+                        <li><span class="cl-icon">🃏</span> 新增 3D 倾斜卡片 — 鼠标悬浮时卡片 3D 倾斜 + 光泽效果 <span
+                                class="cl-tag">交互</span></li>
+                        <li><span class="cl-icon">🎯</span> 新增自定义光标 — 双层光标 + 悬浮放大效果 <span class="cl-tag">视觉</span></li>
+                        <li><span class="cl-icon">🧲</span> 新增磁吸按钮 — CTA 按钮鼠标靠近时吸引偏移 <span class="cl-tag">交互</span></li>
+                        <li><span class="cl-icon">➡️</span> 新增项目横向滚动 — 拖拽/滚轮/触屏横向展示 <span class="cl-tag">交互</span></li>
+                    </ul>
+                </div>
+
+                <!-- v1.0 -->
+                <div class="changelog-entry reveal delay-200">
+                    <div class="changelog-version">
+                        <span class="version-badge">v1.0</span>
+                        <span class="version-date">2025.02.12</span>
+                    </div>
+                    <ul class="changelog-items">
+                        <li><span class="cl-icon">🎉</span> 网站上线！个人品牌站 MVP</li>
+                        <li><span class="cl-icon">🏠</span> Hero 首屏 — 打字机效果 + 粒子背景</li>
+                        <li><span class="cl-icon">👤</span> 关于我 — 核心数据 + 双列介绍 + 雷达图</li>
+                        <li><span class="cl-icon">🛤️</span> 职业旅程 — 时间线布局（苏宁→京东→统信→联合征信）</li>
+                        <li><span class="cl-icon">📦</span> 项目案例 — Bento Grid 布局 5 个标杆项目</li>
+                        <li><span class="cl-icon">💪</span> 技能矩阵 — 6 大能力卡片</li>
+                        <li><span class="cl-icon">📞</span> 联系方式 — 邮箱 + 电话 + 当前状态</li>
+                        <li><span class="cl-icon">🎨</span> 完整设计系统 — CSS 变量 + 组件库 + 动画库</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="nav-logo">
+                        <span class="logo-icon">Z</span>
+                        <span>KEVIN ZHU</span>
+                    </span>
+                    <p class="footer-tagline">AI+FinTech Product Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">首页</a>
+                    <a href="blog.html">博客</a>
+                    <a href="uses.html">工具箱</a>
+                    <a href="changelog.html">更新日志</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2025 朱天胜 · Built with ❤️ and Code</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js?v=v3"></script>
+    <script src="js/animations.js?v=v3"></script>
+    <script src="js/effects.js?v=v3"></script>
+    <script src="js/resume-modal.js?v=v3"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof window.initNavigation === 'function') window.initNavigation();
+            if (typeof window.initAnimations === 'function') window.initAnimations();
+            if (typeof window.initEffects === 'function') window.initEffects();
+            if (typeof window.initResumeModal === 'function') window.initResumeModal();
+        });
+    </script>
+</body>
+
+</html>

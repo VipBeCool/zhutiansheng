@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="朱天胜个人网站留言墙 — 发一条弹幕留言">
+    <title>留言墙 · Kevin Zhu</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/variables.css?v=v3">
+    <link rel="stylesheet" href="css/reset.css?v=v3">
+    <link rel="stylesheet" href="css/layout.css?v=v3">
+    <link rel="stylesheet" href="css/components.css?v=v3">
+    <link rel="stylesheet" href="css/animations.css?v=v3">
+    <link rel="stylesheet" href="css/pages.css?v=v3">
+    <link rel="stylesheet" href="css/effects.css?v=v3">
+    <link rel="stylesheet" href="css/message-wall.css?v=v3">
+    <link rel="stylesheet" href="css/resume-modal.css?v=v3">
+</head>
+
+<body>
+
+    <!-- 鼠标追踪光晕 -->
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="container flex-between">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">Z</span>
+                <span>KEVIN ZHU</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#about" class="nav-link">关于我</a>
+                <a href="index.html#career" class="nav-link">职业旅程</a>
+                <a href="index.html#projects" class="nav-link">项目案例</a>
+                <a href="index.html#skills" class="nav-link">技能矩阵</a>
+                <a href="uses.html" class="nav-link">工具箱</a>
+                <a href="blog.html" class="nav-link">博客</a>
+                <a href="guestbook.html" class="nav-link active">留言墙</a>
+                <a href="changelog.html" class="nav-link">更新日志</a>
+                <a href="index.html#contact" class="nav-link">联系方式</a>
+                <a href="#" class="nav-cta">获取简历</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 留言墙 -->
+    <section class="section message-wall" id="guestbook" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">✦ Guestbook</span>
+                <h1 class="section-title">访客 <span class="gradient-text">留言墙</span></h1>
+                <p class="section-subtitle">发一条弹幕，让你的留言飞起来 ✨</p>
+            </div>
+
+            <!-- 弹幕画布 -->
+            <div class="danmaku-stage" id="danmakuStage"></div>
+
+            <!-- 输入区域 -->
+            <div class="danmaku-input-area">
+                <div class="danmaku-input-group">
+                    <input type="text" class="danmaku-nick-input" id="danmakuNick" placeholder="昵称" maxlength="10">
+                    <input type="text" class="danmaku-msg-input" id="danmakuMsg" placeholder="输入你的留言，按 Enter 发送..."
+                        maxlength="50">
+                </div>
+                <button class="danmaku-send-btn" id="danmakuSend">发射 🚀</button>
+            </div>
+
+            <div class="danmaku-stats"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="nav-logo">
+                        <span class="logo-icon">Z</span>
+                        <span>KEVIN ZHU</span>
+                    </span>
+                    <p class="footer-tagline">AI+FinTech Product Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">首页</a>
+                    <a href="blog.html">博客</a>
+                    <a href="uses.html">工具箱</a>
+                    <a href="changelog.html">更新日志</a>
+                    <a href="guestbook.html">留言墙</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2025 朱天胜 · Built with ❤️ and Code</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 脚本 -->
+    <script src="js/navigation.js?v=v3"></script>
+    <script src="js/animations.js?v=v3"></script>
+    <script src="js/effects.js?v=v3"></script>
+    <script src="js/message-wall.js?v=v3"></script>
+    <script src="js/resume-modal.js?v=v3"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof window.initNavigation === 'function') window.initNavigation();
+            if (typeof window.initAnimations === 'function') window.initAnimations();
+            if (typeof window.initEffects === 'function') window.initEffects();
+            if (typeof window.initMessageWall === 'function') window.initMessageWall();
+            if (typeof window.initResumeModal === 'function') window.initResumeModal();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,946 @@
+/* ============================================
+   页面级样式 — Hero、About、Gallery、Footer 等
+   ============================================ */
+
+/* ============================
+   Hero Section
+   ============================ */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: var(--nav-height);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-2xl) var(--space-lg);
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.hero-badge {
+    margin-bottom: var(--space-sm);
+}
+
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.hero-greeting {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.hero-name {
+    font-family: 'Noto Sans SC', 'Plus Jakarta Sans', var(--font-display);
+    font-size: var(--text-7xl);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+}
+
+.hero-name.gradient-text {
+    background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 50%, #8B5CF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradient-flow 6s ease infinite;
+    position: relative;
+    filter: drop-shadow(0 0 20px rgba(79, 70, 229, 0.3)) drop-shadow(0 0 40px rgba(6, 182, 212, 0.15));
+}
+
+/* 扫光效果 */
+.hero-name.gradient-text::after {
+    content: '朱天胜';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            transparent 0%,
+            transparent 30%,
+            rgba(255, 255, 255, 0.3) 45%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0.3) 55%,
+            transparent 70%,
+            transparent 100%);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textScanLight 4s ease-in-out infinite;
+}
+
+@keyframes textScanLight {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.hero-typing-wrapper {
+    font-family: var(--font-mono);
+    font-size: var(--text-xl);
+    color: var(--text-secondary);
+    min-height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-typing-wrapper .hero-typing {
+    color: var(--accent-secondary);
+}
+
+.hero-description {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    max-width: 850px;
+    line-height: 1.8;
+    padding: 0 var(--space-sm);
+    word-break: break-word;
+}
+
+.hero-description strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+}
+
+.hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(79, 70, 229, 0.25);
+    background: rgba(15, 15, 36, 0.4);
+    backdrop-filter: blur(8px);
+    color: var(--accent-secondary, #06B6D4);
+    text-decoration: none;
+    animation: heroScrollPulse 2.4s ease-in-out infinite;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.hero-scroll:hover {
+    border-color: var(--accent-primary, #4F46E5);
+    box-shadow: 0 0 16px rgba(79, 70, 229, 0.3);
+}
+
+@keyframes heroScrollPulse {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(8px);
+        opacity: 1;
+    }
+}
+
+/* ============================
+   Projects Section — 缩小上方间距让指示器首屏可见
+   ============================ */
+#projects {
+    padding-top: 90px;
+}
+
+/* ============================
+   About Section
+   ============================ */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.stat-item {
+    text-align: center;
+    padding: var(--space-xl);
+    border-radius: var(--radius-xl);
+    background: var(--bg-glass);
+    border: 1px solid var(--border-card);
+    transition: var(--transition-base);
+}
+
+.stat-item:hover {
+    background: var(--bg-glass-hover);
+    border-color: rgba(79, 70, 229, 0.2);
+    transform: translateY(-4px);
+}
+
+.stat-unit {
+    display: inline;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-number {
+    display: inline;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+}
+
+.about-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-lg);
+}
+
+.about-text p {
+    color: var(--text-secondary);
+    font-size: var(--text-base);
+    line-height: 1.9;
+    margin-bottom: var(--space-lg);
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================
+   Career Timeline 增强
+   ============================ */
+.timeline-desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+}
+
+/* ============================
+   Projects Bento Grid
+   ============================ */
+.projects-bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+
+.projects-bento .col-span-2 {
+    grid-column: span 2;
+}
+
+.project-visual-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-icon-large {
+    font-size: 64px;
+    z-index: 1;
+    filter: drop-shadow(0 0 20px rgba(79, 70, 229, 0.3));
+}
+
+.project-float-tags {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.float-tag {
+    position: absolute;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-full);
+    backdrop-filter: blur(8px);
+    animation: float-slow 5s ease-in-out infinite;
+}
+
+.float-tag:nth-child(1) {
+    top: 20%;
+    left: 10%;
+}
+
+.float-tag:nth-child(2) {
+    top: 15%;
+    right: 15%;
+}
+
+.float-tag:nth-child(3) {
+    bottom: 25%;
+    left: 20%;
+}
+
+/* ============================
+   About Toggle — 双人剪影纵深切换
+   ============================ */
+
+/* 关于我区域需要固定最小高度防跳动 */
+#about {
+    position: relative;
+    overflow: hidden;
+    min-height: 900px;
+}
+
+/* 底部融合暗影遮罩，消除硬切割黑边（加大到 250px） */
+#about::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(to top, #080b12 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* 舞台容器：覆盖整个 section */
+.stage-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    perspective: 1000px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* 背景光晕 */
+.bg-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+    filter: blur(100px);
+    opacity: 0.35;
+}
+
+#about.show-work .bg-glow {
+    background:
+        radial-gradient(circle at 42% 50%, var(--accent-primary, #6366f1) 0%, transparent 60%),
+        linear-gradient(to bottom, transparent 65%, #080b12 100%);
+}
+
+#about.show-life .bg-glow {
+    background:
+        radial-gradient(circle at 58% 50%, #00e5ff 0%, transparent 60%),
+        linear-gradient(to bottom, transparent 55%, #080b12 100%);
+}
+
+/* 人物剪影 — 还原 Demo 精髓：利用 top 定死在天花板，彻底免疫高度跳动 */
+.silhouette {
+    position: absolute;
+    top: 115px;
+    /* 再下沉 15px */
+    height: 850px;
+    /* 大体量感 */
+    transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    transform-origin: bottom center;
+}
+
+.silhouette svg {
+    width: auto;
+    height: 100%;
+    fill: #080b12;
+}
+
+/* 两人均面向中间 */
+.sil-work {
+    margin-left: -130px;
+    /* 工作人再向左 10px */
+}
+
+.sil-work svg {
+    transform: scaleX(-1);
+}
+
+.sil-life svg {
+    transform: scaleX(-1);
+}
+
+/* 完全复刻 Demo 经典交错景深 —— 对峙排版 + 完美等比 120% 间距推拉 */
+/* 工作状态：工作人在左前视线，生活人在右后侧退隐 */
+#about.show-work .sil-work {
+    left: 50%;
+    transform: translateX(-120%) scale(1);
+    filter: drop-shadow(0 0 50px rgba(99, 102, 241, 0.35));
+    z-index: 5;
+}
+
+#about.show-work .sil-life {
+    right: 50%;
+    transform: translateX(120%) translateZ(-80px) scale(0.92);
+    filter: brightness(0.25) blur(3px);
+    z-index: 2;
+}
+
+/* 生活状态：生活人在右前视线，工作人在左后侧退隐 */
+#about.show-life .sil-life {
+    right: 50%;
+    transform: translateX(120%) scale(1);
+    filter: drop-shadow(0 0 50px rgba(0, 229, 255, 0.3));
+    z-index: 5;
+}
+
+#about.show-life .sil-work {
+    left: 50%;
+    transform: translateX(-120%) translateZ(-80px) scale(0.92);
+    filter: brightness(0.25) blur(3px);
+    z-index: 2;
+}
+
+/* 胶囊 Tab 切换 */
+.about-nav-tabs {
+    position: relative;
+    z-index: 10;
+    display: inline-flex;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 40px;
+    padding: 5px;
+    backdrop-filter: blur(20px);
+}
+
+.about-nav-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 8px 26px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.4s ease;
+    position: relative;
+    z-index: 2;
+    font-family: inherit;
+}
+
+.about-nav-btn.active {
+    color: #fff;
+}
+
+.about-nav-btn:hover:not(.active) {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Tab 指示器 */
+.about-tab-indicator {
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    width: calc(50% - 5px);
+    border-radius: 30px;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#about.show-work .about-tab-indicator {
+    background: var(--accent-primary, #6366f1);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    transform: translateX(0);
+}
+
+#about.show-life .about-tab-indicator {
+    background: #00e5ff;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+    transform: translateX(100%);
+}
+
+/* 内容面过渡 + 层级 */
+.about-face {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+/* 生活面的主体内容额外下压，平衡视觉 */
+.about-life .about-content {
+    margin-top: 60px;
+}
+
+/* section-header 也需要层级 */
+#about .section-header {
+    position: relative;
+    z-index: 5;
+}
+
+#about .container {
+    position: relative;
+    z-index: 3;
+}
+
+
+/* 生活面标签云 */
+.life-tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.life-tag {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(6, 182, 212, 0.06);
+    border: 1px solid rgba(6, 182, 212, 0.12);
+    border-radius: 20px;
+    transition: all 0.25s ease;
+    cursor: default;
+}
+
+.life-tag:hover {
+    background: rgba(6, 182, 212, 0.15);
+    border-color: rgba(6, 182, 212, 0.3);
+    color: #22d3ee;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.15);
+}
+
+.life-tag:nth-child(3n+1) {
+    font-size: 14px;
+    padding: 9px 18px;
+}
+
+.life-tag:nth-child(5n+2) {
+    font-size: 12px;
+}
+
+
+/* ============================
+   Skills Grid — 紧凑布局，两排一屏展示
+   ============================ */
+#skills {
+    padding: 120px 0 40px;
+}
+
+#skills .section-header {
+    margin-bottom: 40px;
+}
+
+.skills-grid {
+    gap: 20px 24px !important;
+}
+
+.skills-grid .bento-card {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 28px 24px;
+    min-height: 200px;
+}
+
+.skills-grid .bento-card .card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.skills-grid .bento-card .card-title {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.skills-grid .bento-card .card-description {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.skill-tags .tag {
+    font-size: 12px;
+    padding: 2px 10px;
+}
+
+/* ============================
+   Gallery
+   ============================ */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+
+.gallery-placeholder {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--space-5xl) var(--space-2xl);
+    border: 2px dashed var(--border-card);
+    border-radius: var(--radius-xl);
+    background: var(--bg-glass);
+}
+
+.gallery-placeholder-icon {
+    font-size: 64px;
+    margin-bottom: var(--space-lg);
+    opacity: 0.5;
+}
+
+.gallery-placeholder h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+}
+
+.gallery-placeholder p {
+    font-size: var(--text-base);
+    color: var(--text-tertiary);
+}
+
+/* ============================
+   Contact Grid
+   ============================ */
+.contact-grid .contact-card {
+    text-align: center;
+}
+
+.contact-grid .card-title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-sm);
+}
+
+.contact-grid .card-description {
+    font-size: var(--text-base);
+}
+
+/* ============================
+   Footer
+   ============================ */
+.footer {
+    padding: var(--space-3xl) 0;
+    border-top: 1px solid var(--border-subtle);
+    background: var(--bg-secondary);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+    text-align: center;
+}
+
+.footer-tagline {
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+    margin-top: var(--space-sm);
+}
+
+.footer-links {
+    display: flex;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--accent-primary);
+}
+
+.footer-copyright {
+    font-size: var(--text-sm);
+    color: var(--text-tertiary);
+}
+
+.footer-note {
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+    opacity: 0.6;
+    margin-top: var(--space-xs);
+}
+
+/* ============================
+   响应式
+   ============================ */
+@media (max-width: 1024px) {
+    .projects-bento {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projects-bento .col-span-2 {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        padding: var(--space-2xl) var(--space-xl);
+    }
+
+    .hero-description {
+        font-size: var(--text-base);
+        padding: 0 var(--space-md);
+    }
+
+    .hero-name {
+        font-size: var(--text-5xl);
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .hero-actions .btn {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+
+    .about-visual {
+        order: -1;
+    }
+
+    .projects-bento {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-bento .col-span-2 {
+        grid-column: span 1;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+        gap: var(--space-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding: var(--space-xl) var(--space-md);
+    }
+
+    .hero-name {
+        font-size: var(--text-4xl);
+    }
+
+    .hero-greeting {
+        font-size: var(--text-xl);
+    }
+
+    .hero-description {
+        font-size: var(--text-sm);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
+    }
+
+    .stat-item {
+        padding: var(--space-md);
+    }
+}
+
+/* ============================
+   Career Expand — 职业旅程详情展开
+   ============================ */
+
+/* 查看详情/收起按钮 */
+.career-expand-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 20px;
+    padding: 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
+    background: none;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.career-expand-btn:hover {
+    color: #818cf8;
+}
+
+.career-expand-btn:hover .career-expand-btn-text {
+    border-bottom-color: rgba(129, 140, 248, 0.4);
+}
+
+.career-expand-btn-text {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+    padding-bottom: 1px;
+    transition: border-color 0.25s ease;
+}
+
+.career-expand-btn-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 14px;
+}
+
+.career-expanded .career-expand-btn-icon {
+    transform: rotate(180deg);
+}
+
+/* 展开容器 */
+.career-expand {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.career-expand-inner {
+    padding: 16px 0 4px;
+}
+
+/* 核心职责 */
+.career-expand-duties {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.7;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* 亮点列表 */
+.career-expand-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.career-expand-highlights li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.career-expand-highlights li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #818cf8;
+    font-weight: bold;
+}
+
+.career-expand-highlights li strong {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+}
+
+/* 指标卡片 */
+.career-expand-metrics {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.career-expand-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(99, 102, 241, 0.06);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    min-width: 80px;
+}
+
+.career-expand-metric-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #818cf8;
+}
+
+.career-expand-metric-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 2px;
+}

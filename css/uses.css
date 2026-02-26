@@ -1,0 +1,122 @@
+/* ============================================
+   uses.css — 工具箱页面样式
+   ============================================ */
+
+/* Hero 区域 */
+.uses-hero {
+    padding: 120px 0 32px;
+    text-align: center;
+}
+
+.uses-main {
+    padding-bottom: 80px;
+}
+
+/* 分类区块 */
+.uses-category {
+    margin-bottom: 40px;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.category-icon {
+    font-size: 28px;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.category-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary, #f0f0f0);
+}
+
+.category-desc {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
+    margin-left: auto;
+}
+
+/* 工具网格 */
+.uses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* 工具卡片 */
+.uses-card {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.uses-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(79, 70, 229, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* 工具图标 */
+.uses-card-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 工具卡片内容 */
+.uses-card-body h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary, #f0f0f0);
+    margin-bottom: 6px;
+}
+
+.uses-card-body p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .uses-hero {
+        padding: 120px 0 40px;
+    }
+
+    .category-header {
+        flex-wrap: wrap;
+    }
+
+    .category-desc {
+        width: 100%;
+        margin-left: 40px;
+    }
+
+    .uses-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .uses-card {
+        padding: 16px;
+    }
+}

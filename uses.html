@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="朱天胜的工具箱 — 我日常使用的 AI、开发、设计和效率工具">
+    <title>工具箱 · Kevin Zhu</title>
+
+    <!-- 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- 样式 -->
+    <link rel="stylesheet" href="css/variables.css?v=v3">
+    <link rel="stylesheet" href="css/reset.css?v=v3">
+    <link rel="stylesheet" href="css/layout.css?v=v3">
+    <link rel="stylesheet" href="css/components.css?v=v3">
+    <link rel="stylesheet" href="css/animations.css?v=v3">
+    <link rel="stylesheet" href="css/pages.css?v=v3">
+    <link rel="stylesheet" href="css/effects.css?v=v3">
+    <link rel="stylesheet" href="css/uses.css?v=v3">
+    <link rel="stylesheet" href="css/resume-modal.css?v=v3">
+</head>
+
+<body>
+
+    <!-- 鼠标追踪光晕 -->
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="container flex-between">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">Z</span>
+                <span>KEVIN ZHU</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#about" class="nav-link">关于我</a>
+                <a href="index.html#career" class="nav-link">职业旅程</a>
+                <a href="index.html#projects" class="nav-link">项目案例</a>
+                <a href="index.html#skills" class="nav-link">技能矩阵</a>
+                <a href="uses.html" class="nav-link active">工具箱</a>
+                <a href="blog.html" class="nav-link">博客</a>
+                <a href="guestbook.html" class="nav-link">留言墙</a>
+                <a href="changelog.html" class="nav-link">更新日志</a>
+                <a href="index.html#contact" class="nav-link">联系方式</a>
+                <a href="#" class="nav-cta">获取简历</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="uses-hero">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">✦ /uses</span>
+                <h1 class="section-title">我的 <span class="gradient-text">工具箱</span></h1>
+                <p class="section-subtitle">
+                    "工欲善其事，必先利其器" — 这些是我每天用来设计产品、探索 AI、编写代码的装备
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工具分类 -->
+    <main class="uses-main">
+        <div class="container">
+
+            <!-- 🤖 AI 工具链 -->
+            <section class="uses-category reveal">
+                <div class="category-header">
+                    <span class="category-icon">🤖</span>
+                    <h2 class="category-title">AI 工具链</h2>
+                    <span class="category-desc">大模型、Agent 编排、AI 辅助开发</span>
+                </div>
+                <div class="uses-grid">
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #4F46E5, #7C3AED);">🧠
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>Cursor</h3>
+                            <p>主力 IDE，Vibe Coding 神器。基本不用手写代码，AI 辅助完成 90%+ 编码工作。</p>
+                            <span class="tag tag-glow btn-sm">每日必用</span>
+                        </div>
+                    </div>
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #2563EB, #06B6D4);">🔗
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>Dify</h3>
+                            <p>Agent 工作流编排首选平台，拖拽式设计复杂 AI Pipeline，RAG 内置支持。</p>
+                            <span class="tag tag-cyan btn-sm">工作流</span>
+                        </div>
+                    </div>
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #8B5CF6, #EC4899);">💬
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>Claude / GPT-4</h3>
+                            <p>日常推理搭档。Claude 擅长长文分析和代码，GPT-4 擅长创意和多模态任务。</p>
+                            <span class="tag tag-glow btn-sm">推理引擎</span>
+                        </div>
+                    </div>
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #6366F1, #8B5CF6);">🤖
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>Coze</h3>
+                            <p>快速搭建对话机器人，适合原型验证和业务场景快速落地。</p>
+                            <span class="tag tag-cyan btn-sm">Bot 搭建</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 💻 开发环境 -->
+            <section class="uses-category reveal delay-100">
+                <div class="category-header">
+                    <span class="category-icon">💻</span>
+                    <h2 class="category-title">开发环境</h2>
+                    <span class="category-desc">代码编辑、版本控制、部署</span>
+                </div>
+                <div class="uses-grid">
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #0078D4, #06B6D4);">📝
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>VS Code</h3>
+                            <p>轻量编辑器，插件生态无敌。Debug、终端、Git 一体化。</p>
+                            <span class="tag tag-glow btn-sm">编辑器</span>
+                        </div>
+                    </div>
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #24292F, #586069);">🐙
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>GitHub</h3>
+                            <p>代码托管 + CI/CD + Copilot，开发者基础设施。</p>
+                            <span class="tag tag-cyan btn-sm">版本控制</span>
+                        </div>
+                    </div>
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #000000, #333333);">▲
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>Vercel</h3>
+                            <p>前端部署一键搞定，Preview URL + 自动 SSL，开发者体验极佳。</p>
+                            <span class="tag tag-glow btn-sm">部署</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 🎨 设计工具 -->
+            <section class="uses-category reveal delay-200">
+                <div class="category-header">
+                    <span class="category-icon">🎨</span>
+                    <h2 class="category-title">设计工具</h2>
+                    <span class="category-desc">UI/UX 设计、原型、AI 生图</span>
+                </div>
+                <div class="uses-grid">
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #A259FF, #FF7262);">🎯
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>Figma</h3>
+                            <p>协作设计第一选择。组件化设计系统 + Auto Layout + 交互原型。</p>
+                            <span class="tag tag-glow btn-sm">设计</span>
+                        </div>
+                    </div>
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #FF6B35, #FFD700);">🖼️
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>Midjourney</h3>
+                            <p>AI 生图创意利器，PPT 配图、概念设计、品牌视觉一条龙。</p>
+                            <span class="tag tag-cyan btn-sm">AI 生图</span>
+                        </div>
+                    </div>
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #007AFF, #5856D6);">📊
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>Keynote</h3>
+                            <p>PPT 设计师的秘密武器。动画效果和排版能力吊打 PowerPoint。</p>
+                            <span class="tag tag-glow btn-sm">演示</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ⚡ 效率利器 -->
+            <section class="uses-category reveal delay-300">
+                <div class="category-header">
+                    <span class="category-icon">⚡</span>
+                    <h2 class="category-title">效率利器</h2>
+                    <span class="category-desc">知识管理、浏览器、启动器</span>
+                </div>
+                <div class="uses-grid">
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #000000, #444444);">📋
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>Notion</h3>
+                            <p>第二大脑。项目管理、知识库、日记、读书笔记全在这里。</p>
+                            <span class="tag tag-glow btn-sm">知识库</span>
+                        </div>
+                    </div>
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #4F46E5, #EC4899);">🌐
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>Arc Browser</h3>
+                            <p>最美浏览器。Spaces + Boost + Little Arc，重新定义浏览器体验。</p>
+                            <span class="tag tag-cyan btn-sm">浏览器</span>
+                        </div>
+                    </div>
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #FF6363, #FFB84C);">⚡
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>Raycast</h3>
+                            <p>Mac 效率启动器，替代 Spotlight。插件生态强大，什么都能搜。</p>
+                            <span class="tag tag-glow btn-sm">启动器</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 🖥️ 硬件装备 -->
+            <section class="uses-category reveal delay-400">
+                <div class="category-header">
+                    <span class="category-icon">🖥️</span>
+                    <h2 class="category-title">硬件装备</h2>
+                    <span class="category-desc">主力生产力和移动办公设备</span>
+                </div>
+                <div class="uses-grid">
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #86868B, #1D1D1F);">💻
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>MacBook Pro M3</h3>
+                            <p>主力生产力。18h 续航 + 统一内存 + 屏幕素质顶级，移动办公首选。</p>
+                            <span class="tag tag-glow btn-sm">主力机</span>
+                        </div>
+                    </div>
+                    <div class="uses-card">
+                        <div class="uses-card-icon" style="background: linear-gradient(135deg, #0071E3, #5856D6);">📱
+                        </div>
+                        <div class="uses-card-body">
+                            <h3>iPad Pro + Apple Pencil</h3>
+                            <p>移动办公 + 手绘原型 + 会议笔记，出差必备搭档。</p>
+                            <span class="tag tag-cyan btn-sm">移动端</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="nav-logo">
+                        <span class="logo-icon">Z</span>
+                        <span>KEVIN ZHU</span>
+                    </span>
+                    <p class="footer-tagline">AI+FinTech Product Architect</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">首页</a>
+                    <a href="uses.html">工具箱</a>
+                    <a href="blog.html">博客</a>
+                    <a href="changelog.html">更新日志</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2025 朱天胜 · Built with ❤️ and Code</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 脚本 -->
+    <script src="js/navigation.js?v=v3"></script>
+    <script src="js/animations.js?v=v3"></script>
+    <script src="js/effects.js?v=v3"></script>
+    <script src="js/resume-modal.js?v=v3"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof window.initNavigation === 'function') window.initNavigation();
+            if (typeof window.initAnimations === 'function') window.initAnimations();
+            if (typeof window.initEffects === 'function') window.initEffects();
+            if (typeof window.initResumeModal === 'function') window.initResumeModal();
+        });
+    </script>
+</body>
+
+</html>

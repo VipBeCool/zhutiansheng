@@ -1,0 +1,41 @@
+[
+    {
+        "slug": "ai-agent-design-patterns",
+        "title": "AI Agent 设计模式与实战经验",
+        "date": "2025-02-10",
+        "tags": [
+            "AI",
+            "Agent",
+            "架构设计"
+        ],
+        "summary": "从流水分析 Agent 的实战出发，总结多阶协同 Agent 架构的设计模式、Prompt 工程技巧和评测体系搭建经验。",
+        "readTime": 8,
+        "file": "ai-agent-design-patterns.md"
+    },
+    {
+        "slug": "prompt-engineering-production",
+        "title": "Prompt Engineering：从入门到生产级",
+        "date": "2025-01-20",
+        "tags": [
+            "AI",
+            "Prompt",
+            "实战"
+        ],
+        "summary": "系统梳理 Prompt Engineering 的核心方法论，包括 CoT 思维链、Few-shot、结构化输出，以及在生产环境中的稳定性优化策略。",
+        "readTime": 12,
+        "file": "prompt-engineering-production.md"
+    },
+    {
+        "slug": "pm-cursor-poc",
+        "title": "产品经理如何用 Cursor 做 POC",
+        "date": "2025-01-05",
+        "tags": [
+            "工程实践",
+            "效率工具",
+            "产品思维"
+        ],
+        "summary": "作为产品经理，我如何借助 Cursor + Vibe Coding 快速验证产品想法，从构思到可交互 Demo 仅需半天。一个\"极客 PM\"的工程实践分享。",
+        "readTime": 6,
+        "file": "pm-cursor-poc.md"
+    }
+]

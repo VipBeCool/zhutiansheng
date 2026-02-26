@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="朱天胜 - 资深AI+金融科技产品经理，14年行业经验，深耕大模型应用与金融产品创新">
+  <meta name="keywords" content="产品经理,AI,金融科技,LLM,Agent,智能营销">
+  <title>朱天胜 · AI+FinTech Product Architect</title>
+
+  <!-- 字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- 样式 -->
+  <link rel="stylesheet" href="css/variables.css?v=v3">
+  <link rel="stylesheet" href="css/reset.css?v=v3">
+  <link rel="stylesheet" href="css/layout.css?v=v3">
+  <link rel="stylesheet" href="css/components.css?v=v3">
+  <link rel="stylesheet" href="css/animations.css?v=v3">
+  <link rel="stylesheet" href="css/pages.css?v=v3">
+  <link rel="stylesheet" href="css/effects.css?v=v3">
+  <link rel="stylesheet" href="css/bookshelf.css?v=v3">
+  <link rel="stylesheet" href="css/message-wall.css?v=v3">
+  <link rel="stylesheet" href="css/resume-modal.css?v=v3">
+  <link rel="stylesheet" href="css/project-modal.css?v=v3">
+</head>
+
+<body>
+
+  <!-- 鼠标追踪光晕 -->
+  <div class="mouse-glow" id="mouseGlow"></div>
+
+  <!-- ============================
+       导航栏
+       ============================ -->
+  <nav class="navbar" id="navbar">
+    <div class="container flex-between">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-icon">Z</span>
+        <span>KEVIN ZHU</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about" class="nav-link">关于我</a>
+        <a href="#career" class="nav-link">职业旅程</a>
+        <a href="#projects" class="nav-link">项目案例</a>
+        <a href="#skills" class="nav-link">技能矩阵</a>
+        <a href="uses.html" class="nav-link">工具箱</a>
+        <a href="blog.html" class="nav-link">博客</a>
+        <a href="guestbook.html" class="nav-link">留言墙</a>
+        <a href="changelog.html" class="nav-link">更新日志</a>
+        <a href="#contact" class="nav-link">联系方式</a>
+        <a href="#" class="nav-cta">获取简历</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================
+       Hero 首屏
+       ============================ -->
+  <section class="section hero-section" id="hero">
+    <!-- 背景层 -->
+    <div class="hero-gradient"></div>
+    <div class="grid-bg"></div>
+    <canvas class="particles-canvas" id="particlesCanvas"></canvas>
+
+    <div class="container hero-content">
+      <!-- 顶部标签 -->
+      <div class="hero-badge" style="animation: fadeInDown 0.8s ease 0.2s both;">
+        <span class="tag tag-glow">
+          <span
+            style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10B981;box-shadow:0 0 8px rgba(16,185,129,0.6);"></span>
+          Open to Opportunities
+        </span>
+      </div>
+
+      <!-- 主标题 -->
+      <h1 class="hero-title" style="animation: fadeInUp 0.8s ease 0.4s both;">
+        <span class="hero-greeting">Hi, I'm</span>
+        <span class="hero-name gradient-text glitch" data-text="朱天胜">朱天胜</span>
+      </h1>
+
+      <!-- 打字机副标题 -->
+      <div class="hero-typing-wrapper" style="animation: fadeInUp 0.8s ease 0.6s both;">
+        <span class="hero-typing" id="typingText"></span>
+        <span class="typing-cursor"></span>
+      </div>
+
+      <!-- 简介 -->
+      <p class="hero-description" style="animation: fadeInUp 0.8s ease 0.8s both;">
+        14年深耕<strong>金融科技</strong>与<strong>AI应用</strong>，兼具C端百万DAU产品操盘与B端复杂系统设计经验。<br>
+        擅长UI/UX设计与工程化实践，是PM中的<strong>极客</strong>。
+      </p>
+
+      <!-- CTA -->
+      <div class="hero-actions" style="animation: fadeInUp 0.8s ease 1s both;">
+        <a href="#projects" class="btn btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h6v6" />
+            <path d="M10 14L21 3" />
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+          </svg>
+          探索我的项目
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          联系我
+        </a>
+      </div>
+
+    </div>
+
+    <!-- 滚动指示 — 点击跳到关于我 -->
+    <a href="#about" class="hero-scroll" aria-label="向下滚动">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+      </svg>
+    </a>
+  </section>
+
+  <!-- ============================
+       关于我
+       ============================ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">✦ About Me</span>
+        <h2 class="section-title">数据驱动的 <span class="gradient-text">全栈型产品经理</span></h2>
+        <p class="section-subtitle">
+          不只是定义产品，更推动从概念到落地的全链路实现。用数据说话，用设计思考，用技术验证。
+        </p>
+      </div>
+
+      <!-- 核心数据 -->
+      <div class="stats-grid reveal delay-200">
+        <div class="stat-item">
+          <div class="stat-number" data-target="14">0</div>
+          <div class="stat-unit">+</div>
+          <div class="stat-label">年从业经验</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="2000">0</div>
+          <div class="stat-unit">亿</div>
+          <div class="stat-label">AUM 管理规模</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="400">0</div>
+          <div class="stat-unit">万</div>
+          <div class="stat-label">持仓用户</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-unit">%</div>
+          <div class="stat-label">客服满意度提升</div>
+        </div>
+      </div>
+
+      <!-- 个人介绍（双列布局） -->
+      <div class="about-content">
+        <div class="about-text reveal delay-300">
+          <h3 class="about-heading">产品思维 × 技术实践 × 设计审美</h3>
+          <p>
+            从苏宁电商起步，经历京东金融的千亿级财富管理平台锤炼，到如今在征信行业推动AI+数据产品创新——我始终相信，优秀的产品经理不止于画原型写PRD，更要深入理解技术可能性，亲手验证可行性。
+          </p>
+          <p>
+            我是团队里那个能写 Prompt、调 Agent、编排 Workflow，甚至用 Cursor 做出 POC DEMO
+            的产品经理。在追求产品价值最大化的过程中，我享受从0到1的创造感——这个网站本身，就是我"全栈PM"理念的一个注脚。
+          </p>
+        </div>
+        <div class="about-visual reveal delay-400">
+          <!-- 技能雷达图 -->
+          <div class="radar-chart" id="radarChart">
+            <canvas id="radarCanvas" width="400" height="400"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       职业旅程
+       ============================ -->
+  <section class="section" id="career">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">✦ Career Journey</span>
+        <h2 class="section-title">从电商到金融科技的 <span class="gradient-text">进化之路</span></h2>
+      </div>
+
+      <div class="timeline">
+        <!-- 滚动驱动的 SVG 路径动画 -->
+        <svg class="timeline-svg" aria-hidden="true">
+          <defs>
+            <!-- 渐变色路径 -->
+            <linearGradient id="timeline-gradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#4f46e5" />
+              <stop offset="50%" stop-color="#06b6d4" />
+              <stop offset="100%" stop-color="#10b981" />
+            </linearGradient>
+            <!-- 发光滤镜 -->
+            <filter id="timeline-glow">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- 底层暗色路径（轨道） -->
+          <path class="timeline-track" d="" />
+          <!-- 上层发光路径（滚动绘制） -->
+          <path class="timeline-draw" d="" filter="url(#timeline-glow)" />
+        </svg>
+        <!-- 联合征信 -->
+        <div class="timeline-item reveal">
+          <span class="timeline-date">2022.09 – 至今</span>
+          <h3 class="timeline-title">江苏省联合征信</h3>
+          <p class="timeline-role">征信数据产品经理（智能营销方向）</p>
+          <p class="timeline-desc">负责将征信数据资产产品化，推动核心产品的 AI 重构，落地智能营销、流水分析等生成式 AI 应用。</p>
+          <div class="timeline-highlights">
+            <span class="tag tag-glow">AI Agent</span>
+            <span class="tag tag-cyan">RAG</span>
+            <span class="tag tag-amber">智能营销</span>
+            <span class="tag tag-emerald">风控模型</span>
+          </div>
+        </div>
+
+        <!-- 统信软件 -->
+        <div class="timeline-item reveal delay-100">
+          <span class="timeline-date">2021.08 – 2022.09</span>
+          <h3 class="timeline-title">统信软件技术</h3>
+          <p class="timeline-role">桌面应用产品部 · 用户产品经理</p>
+          <p class="timeline-desc">负责 UOS 内置 OA 应用产品设计，改版邮箱用户增长30%，应用商店下载量翻倍。</p>
+          <div class="timeline-highlights">
+            <span class="tag tag-glow">OA 应用</span>
+            <span class="tag tag-cyan">UOS 生态</span>
+          </div>
+        </div>
+
+        <!-- 京东 -->
+        <div class="timeline-item reveal delay-200">
+          <span class="timeline-date">2016.03 – 2021.07</span>
+          <h3 class="timeline-title">京东科技 / 京东金融</h3>
+          <p class="timeline-role">金融科技业务部 · 金融科技产品经理 (P7)</p>
+          <p class="timeline-desc">"银行精选"存款平台PM，持仓户400万、日GMV 15亿、AUM 2000亿。负责理财产品设计、信用卡支付生态、数字银行等业务。</p>
+          <div class="timeline-highlights">
+            <span class="tag tag-glow">千亿 AUM</span>
+            <span class="tag tag-amber">存款平台</span>
+            <span class="tag tag-cyan">理财产品</span>
+            <span class="tag tag-emerald">增长运营</span>
+          </div>
+        </div>
+
+        <!-- 宽连十方 -->
+        <div class="timeline-item reveal delay-300">
+          <span class="timeline-date">2014.09 – 2016.03</span>
+          <h3 class="timeline-title">宽连十方数字技术</h3>
+          <p class="timeline-role">产品创新部 · 商业化产品经理</p>
+          <p class="timeline-desc">负责运营商工单平台、OA 管理平台等 SaaS 系统设计，完成中移动和博西集团等重点项目交付。</p>
+          <div class="timeline-highlights">
+            <span class="tag tag-glow">SaaS</span>
+            <span class="tag tag-cyan">运营商</span>
+          </div>
+        </div>
+
+        <!-- 春宇数字科技 -->
+        <div class="timeline-item reveal delay-400">
+          <span class="timeline-date">2013.03 – 2014.09</span>
+          <h3 class="timeline-title">春宇数字科技</h3>
+          <p class="timeline-role">产品经理</p>
+          <p class="timeline-desc">主导大宗商品电商系统设计，完成多个0-1产品的系统架构与上线。</p>
+          <div class="timeline-highlights">
+            <span class="tag tag-glow">供应链</span>
+            <span class="tag tag-amber">B2B电商</span>
+          </div>
+        </div>
+
+        <!-- 苏宁易购 -->
+        <div class="timeline-item reveal delay-500">
+          <span class="timeline-date">2011.07 – 2013.03</span>
+          <h3 class="timeline-title">苏宁易购</h3>
+          <p class="timeline-role">电商产品经理</p>
+          <p class="timeline-desc">负责苏宁开放平台商家入驻系统产品设计，完成商家入驻全流程的0-1搭建与上线。</p>
+          <div class="timeline-highlights">
+            <span class="tag tag-glow">电商平台</span>
+            <span class="tag tag-cyan">开放平台</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       项目案例
+       ============================ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">✦ Projects</span>
+        <h2 class="section-title">核心 <span class="gradient-text">项目案例</span></h2>
+        <p class="section-subtitle">从AI Agent到千亿级金融平台，每个项目都在探索产品创新和技术落地的最优解。</p>
+      </div>
+
+      <div class="bento-grid projects-bento">
+        <!-- 项目1：流水分析Agent -->
+        <div class="project-card col-span-2 reveal" id="project-agent" data-project="agent">
+          <div class="project-visual"
+            style="background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2e 50%, #1a0f2e 100%);">
+            <div class="project-visual-content">
+              <div class="project-icon-large">🤖</div>
+              <div class="project-float-tags">
+                <span class="float-tag" style="animation-delay: 0s;">CoT 思维链</span>
+                <span class="float-tag" style="animation-delay: 0.5s;">OCR</span>
+                <span class="float-tag" style="animation-delay: 1s;">风控规则</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-category">AI · Agent · LLM</span>
+            <h3 class="project-title">企业信贷流水分析 Agent</h3>
+            <p class="project-desc">
+              构建基于LLM的智能分析Agent，融合OCR与大模型推理能力，建立11大类200+风控规则，以多维交易图谱还原企业真实经营现金流。搭建"分类-计算-写作"多阶协同Agent架构。
+            </p>
+            <div class="project-tags">
+              <span class="tag tag-glow">Agent 架构</span>
+              <span class="tag tag-cyan">CoT 推理</span>
+              <span class="tag tag-amber">风控引擎</span>
+            </div>
+            <div class="project-metrics">
+              <div class="metric">
+                <span class="metric-value">200+</span>
+                <span class="metric-label">风控规则</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">2h→5min</span>
+                <span class="metric-label">审查耗时</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">11类</span>
+                <span class="metric-label">规则分类</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目2：智能营销平台 -->
+        <div class="project-card reveal delay-100" data-project="marketing">
+          <div class="project-visual"
+            style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);">
+            <div class="project-visual-content">
+              <div class="project-icon-large">📊</div>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-category">AI · 营销 · Data</span>
+            <h3 class="project-title">智能营销平台</h3>
+            <p class="project-desc">
+              数据+AI驱动的智能营销平台，引入LLM重构客户触达与风险识别链路，每月匹配客户企业近2W家。
+            </p>
+            <div class="project-tags">
+              <span class="tag tag-glow">LLM</span>
+              <span class="tag tag-emerald">获客</span>
+            </div>
+            <div class="project-metrics">
+              <div class="metric">
+                <span class="metric-value">2W</span>
+                <span class="metric-label">月匹配客户</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目3：AI客服 -->
+        <div class="project-card reveal delay-200" data-project="ai-cs">
+          <div class="project-visual"
+            style="background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1a1a3e 100%);">
+            <div class="project-visual-content">
+              <div class="project-icon-large">💬</div>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-category">AI · NLP · Agent</span>
+            <h3 class="project-title">AI 客服 "苏晓惠"</h3>
+            <p class="project-desc">
+              基于大模型的多轮对话Agent，含RAG知识库、意图管理、SFT微调，满意度提升50%。
+            </p>
+            <div class="project-tags">
+              <span class="tag tag-glow">RAG</span>
+              <span class="tag tag-cyan">微调</span>
+            </div>
+            <div class="project-metrics">
+              <div class="metric">
+                <span class="metric-value">85%</span>
+                <span class="metric-label">FAQ命中</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">↓25%</span>
+                <span class="metric-label">转接率</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目4："固收+"理财 -->
+        <div class="project-card reveal delay-100" data-project="fund">
+          <div class="project-visual"
+            style="background: linear-gradient(135deg, #1a1a0a 0%, #2e2e0f 50%, #3e3a0f 100%);">
+            <div class="project-visual-content">
+              <div class="project-icon-large">📈</div>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-category">金融 · 增长 · 运营</span>
+            <h3 class="project-title">"固收+"理财业务增长</h3>
+            <p class="project-desc">
+              整合京东固收理财品类，构建精准营销体系，品类渗透率提升70%，累计导流160W用户。
+            </p>
+            <div class="project-tags">
+              <span class="tag tag-amber">增长</span>
+              <span class="tag tag-emerald">精准营销</span>
+            </div>
+            <div class="project-metrics">
+              <div class="metric">
+                <span class="metric-value">70%</span>
+                <span class="metric-label">渗透率提升</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">160W</span>
+                <span class="metric-label">导流用户</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目5：银行精选 -->
+        <div class="project-card col-span-2 reveal delay-200" data-project="bank">
+          <div class="project-visual"
+            style="background: linear-gradient(135deg, #0a1628 0%, #162d50 50%, #1a3a64 100%);">
+            <div class="project-visual-content">
+              <div class="project-icon-large">🏦</div>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-category">金融 · 平台 · 交易</span>
+            <h3 class="project-title">"银行精选" F2B2C 存款平台</h3>
+            <p class="project-desc">
+              事业部战略项目，从0-1搭建在线存款交易平台。梳理各行存款产品形态、交易结构和计结息规则，设计用户端电子户开户、交易、持仓全链路，联合银行设计"智能存款"创新产品。
+            </p>
+            <div class="project-tags">
+              <span class="tag tag-glow">平台架构</span>
+              <span class="tag tag-amber">智能存款</span>
+              <span class="tag tag-cyan">0-1搭建</span>
+              <span class="tag tag-emerald">异业合作</span>
+            </div>
+            <div class="project-metrics">
+              <div class="metric">
+                <span class="metric-value">2000亿</span>
+                <span class="metric-label">AUM</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">400万</span>
+                <span class="metric-label">持仓户</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">15亿/日</span>
+                <span class="metric-label">GMV</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">67%</span>
+                <span class="metric-label">营销使用率</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- bento-grid -->
+    </div>
+  </section>
+
+  <!-- ============================
+       技能矩阵
+       ============================ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">✦ Skills</span>
+        <h2 class="section-title">技能 <span class="gradient-text">矩阵</span></h2>
+        <p class="section-subtitle">跨界整合产品、技术、设计与业务的复合能力</p>
+      </div>
+
+      <div class="bento-grid bento-grid-3 skills-grid">
+        <!-- AI & LLM -->
+        <div class="bento-card card-blue reveal">
+          <div class="card-icon">🤖</div>
+          <h3 class="card-title">AI & LLM</h3>
+          <p class="card-description">Agent/RAG 架构设计、Prompt Engineering、模型微调(SFT+LoRA)、评测体系搭建、Dify/Coze 工作流编排</p>
+          <div class="skill-tags">
+            <span class="tag tag-glow btn-sm">Agent</span>
+            <span class="tag tag-glow btn-sm">RAG</span>
+            <span class="tag tag-glow btn-sm">Prompt</span>
+            <span class="tag tag-glow btn-sm">微调</span>
+          </div>
+        </div>
+
+        <!-- 数据驱动 -->
+        <div class="bento-card card-cyan reveal delay-100">
+          <div class="card-icon">📊</div>
+          <h3 class="card-title">数据驱动</h3>
+          <p class="card-description">业务指标体系搭建、用户标签与画像系统、营销转化漏斗、A/B测试、数据运营策略</p>
+          <div class="skill-tags">
+            <span class="tag tag-cyan btn-sm">指标体系</span>
+            <span class="tag tag-cyan btn-sm">画像系统</span>
+            <span class="tag tag-cyan btn-sm">A/B测试</span>
+          </div>
+        </div>
+
+        <!-- 设计能力 -->
+        <div class="bento-card card-rose reveal delay-200">
+          <div class="card-icon">🎨</div>
+          <h3 class="card-title">设计能力</h3>
+          <p class="card-description">UI/UX设计、PPT认证设计师、Figma/Sketch、产品原型设计、交互设计、设计系统搭建</p>
+          <div class="skill-tags">
+            <span class="tag tag-glow btn-sm">UI/UX</span>
+            <span class="tag tag-glow btn-sm">Figma</span>
+            <span class="tag tag-glow btn-sm">原型设计</span>
+          </div>
+        </div>
+
+        <!-- 工程实践 -->
+        <div class="bento-card card-emerald reveal delay-300">
+          <div class="card-icon">💻</div>
+          <h3 class="card-title">工程实践</h3>
+          <p class="card-description">Cursor/Vibe Coding 快速原型验证、前端开发基础、API设计与对接、技术方案评审</p>
+          <div class="skill-tags">
+            <span class="tag tag-emerald btn-sm">Cursor</span>
+            <span class="tag tag-emerald btn-sm">POC</span>
+            <span class="tag tag-emerald btn-sm">API设计</span>
+          </div>
+        </div>
+
+        <!-- 金融业务 -->
+        <div class="bento-card card-amber reveal delay-400">
+          <div class="card-icon">💰</div>
+          <h3 class="card-title">金融业务</h3>
+          <p class="card-description">信贷全周期（营销-风控-授信）、财富管理（理财/存款/基金）、征信数据产品、支付清结算</p>
+          <div class="skill-tags">
+            <span class="tag tag-amber btn-sm">信贷</span>
+            <span class="tag tag-amber btn-sm">理财</span>
+            <span class="tag tag-amber btn-sm">征信</span>
+          </div>
+        </div>
+
+        <!-- 增长运营 -->
+        <div class="bento-card card-violet reveal delay-500">
+          <div class="card-icon">📈</div>
+          <h3 class="card-title">增长运营</h3>
+          <p class="card-description">用户增长策略、精准营销体系、转化漏斗优化、营销活动设计、优惠券/权益体系</p>
+          <div class="skill-tags">
+            <span class="tag tag-glow btn-sm">增长</span>
+            <span class="tag tag-glow btn-sm">营销</span>
+            <span class="tag tag-glow btn-sm">转化</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       书架
+       ============================ -->
+  <section class="section" id="bookshelf">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">✦ Bookshelf</span>
+        <h2 class="section-title">我的 <span class="gradient-text">书架</span></h2>
+        <p class="section-subtitle">这些书塑造了我的产品思维、技术认知和管理哲学</p>
+      </div>
+      <div id="bookshelfContainer" class="reveal delay-200"></div>
+    </div>
+  </section>
+
+  <!-- ============================
+       设计作品展示
+       ============================ -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">✦ Design Gallery</span>
+        <h2 class="section-title">设计 <span class="gradient-text">作品集</span></h2>
+        <p class="section-subtitle">UI/UX设计、产品原型、PPT作品展示</p>
+      </div>
+
+      <div class="gallery-grid reveal delay-200">
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon">🎨</div>
+          <h3>作品上传中</h3>
+          <p>设计稿、产品原型和PPT作品即将上线展示</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       联系方式
+       ============================ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">✦ Contact</span>
+        <h2 class="section-title">取得 <span class="gradient-text">联系</span></h2>
+        <p class="section-subtitle">期待与您探讨 AI+金融科技的无限可能</p>
+      </div>
+
+      <div class="bento-grid bento-grid-3 contact-grid">
+        <div class="contact-card reveal">
+          <div class="contact-icon">📧</div>
+          <h3 class="card-title">邮箱</h3>
+          <p class="card-description">vipbecool@qq.com</p>
+        </div>
+
+        <div class="contact-card reveal delay-100">
+          <div class="contact-icon">📱</div>
+          <h3 class="card-title">电话</h3>
+          <p class="card-description">186-6272-2418</p>
+        </div>
+
+        <div class="contact-card reveal delay-200">
+          <div class="contact-icon">💼</div>
+          <h3 class="card-title">当前状态</h3>
+          <p class="card-description" style="color: var(--color-emerald);">✦ Open to Opportunities</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       Footer
+       ============================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="nav-logo">
+            <span class="logo-icon">Z</span>
+            <span>KEVIN ZHU</span>
+          </span>
+          <p class="footer-tagline">AI+FinTech Product Architect</p>
+        </div>
+        <div class="footer-links">
+          <a href="#about">关于我</a>
+          <a href="#career">职业旅程</a>
+          <a href="#projects">项目案例</a>
+          <a href="uses.html">工具箱</a>
+          <a href="blog.html">博客</a>
+          <a href="changelog.html">更新日志</a>
+        </div>
+        <div class="footer-copyright">
+          <p>© 2025 朱天胜 · Built with ❤️ and Code</p>
+          <p class="footer-note">本站由产品经理独立设计与开发 — 全栈PM的实践之作</p>
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button class="back-to-top" id="backToTop" aria-label="返回顶部"
+    style="opacity:0;visibility:hidden;pointer-events:none;transform:translateY(20px)">
+    <svg viewBox="0 0 24 24">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+    <svg class="progress-ring" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="22"></circle>
+    </svg>
+  </button>
+  <script>
+    // 返回顶部按钮 — 内联脚本确保即时绑定
+    (function () {
+      var btn = document.getElementById('backToTop');
+      if (!btn) return;
+
+      var circle = btn.querySelector('.progress-ring circle');
+      var R = 22, C = 2 * Math.PI * R;
+      if (circle) {
+        circle.style.strokeDasharray = C;
+        circle.style.strokeDashoffset = C;
+      }
+
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var scrollY = window.scrollY || window.pageYOffset;
+          var docH = document.documentElement.scrollHeight - window.innerHeight;
+          var progress = Math.min(scrollY / docH, 1);
+
+          // 显示 / 隐藏
+          if (scrollY > 300) {
+            btn.style.opacity = '1';
+            btn.style.visibility = 'visible';
+            btn.style.pointerEvents = 'auto';
+            btn.style.transform = 'translateY(0)';
+            btn.classList.add('visible');
+          } else {
+            btn.style.opacity = '0';
+            btn.style.visibility = 'hidden';
+            btn.style.pointerEvents = 'none';
+            btn.style.transform = 'translateY(20px)';
+            btn.classList.remove('visible');
+          }
+
+          // 更新进度环
+          if (circle) {
+            circle.style.strokeDashoffset = C - progress * C;
+          }
+          ticking = false;
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // 点击回到顶部
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+
+  <!-- 脚本 -->
+  <script src="js/particles.js?v=v3"></script>
+  <script src="js/animations.js?v=v3"></script>
+  <script src="js/navigation.js?v=v3"></script>
+  <script src="js/effects.js?v=v3"></script>
+  <script src="js/terminal.js?v=v3"></script>
+  <script src="js/horizontal-scroll.js?v=v3"></script>
+  <script src="js/bookshelf.js?v=v3"></script>
+  <script src="js/message-wall.js?v=v3"></script>
+  <script src="js/resume-modal.js?v=v3"></script>
+  <script src="js/project-modal.js?v=v3"></script>
+  <script src="js/career-expand.js?v=v3"></script>
+  <script src="js/about-toggle.js?v=v3"></script>
+  <script src="js/main.js?v=v3"></script>
+</body>
+
+</html>

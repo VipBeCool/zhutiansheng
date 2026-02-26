@@ -1,0 +1,321 @@
+/* ============================================
+   留言弹幕墙
+   ============================================ */
+
+/* 弹幕区容器 */
+.message-wall {
+    position: relative;
+    overflow: hidden;
+    min-height: 480px;
+}
+
+.message-wall .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* 弹幕画布 */
+.danmaku-stage {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: rgba(10, 10, 30, 0.6);
+    border: 1px solid var(--border-subtle);
+    margin-bottom: var(--space-2xl);
+}
+
+/* 微妙的网格背景 */
+.danmaku-stage::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* 左右渐变遮罩：让弹幕淡入淡出 */
+.danmaku-stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            rgba(5, 5, 16, 0.95) 0%,
+            transparent 8%,
+            transparent 92%,
+            rgba(5, 5, 16, 0.95) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 单条弹幕气泡 */
+.danmaku-item {
+    position: absolute;
+    white-space: nowrap;
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-family: var(--font-primary);
+    font-weight: 500;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+    z-index: 1;
+    will-change: transform;
+    animation: danmaku-scroll var(--speed, 12s) linear forwards;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 弹幕头像 emoji */
+.danmaku-avatar {
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* 弹幕昵称 */
+.danmaku-nick {
+    color: var(--accent-secondary);
+    font-weight: 600;
+    font-size: var(--text-xs);
+    margin-right: 2px;
+}
+
+/* 弹幕内容 */
+.danmaku-text {
+    opacity: 0.9;
+}
+
+/* 不同颜色变体 */
+.danmaku-item[data-color="indigo"] {
+    border-color: rgba(79, 70, 229, 0.25);
+    background: rgba(79, 70, 229, 0.1);
+    box-shadow: 0 0 12px rgba(79, 70, 229, 0.08);
+}
+
+.danmaku-item[data-color="cyan"] {
+    border-color: rgba(6, 182, 212, 0.25);
+    background: rgba(6, 182, 212, 0.1);
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.08);
+}
+
+.danmaku-item[data-color="emerald"] {
+    border-color: rgba(16, 185, 129, 0.25);
+    background: rgba(16, 185, 129, 0.1);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.08);
+}
+
+.danmaku-item[data-color="amber"] {
+    border-color: rgba(245, 158, 11, 0.25);
+    background: rgba(245, 158, 11, 0.1);
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.08);
+}
+
+.danmaku-item[data-color="violet"] {
+    border-color: rgba(139, 92, 246, 0.25);
+    background: rgba(139, 92, 246, 0.1);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.08);
+}
+
+.danmaku-item[data-color="rose"] {
+    border-color: rgba(244, 63, 94, 0.25);
+    background: rgba(244, 63, 94, 0.1);
+    box-shadow: 0 0 12px rgba(244, 63, 94, 0.08);
+}
+
+/* 访客发送的弹幕高亮 */
+.danmaku-item[data-user="true"] {
+    border-color: rgba(79, 70, 229, 0.4);
+    background: rgba(79, 70, 229, 0.15);
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.12);
+}
+
+/* 弹幕飘动动画 */
+@keyframes danmaku-scroll {
+    from {
+        transform: translateX(0);
+        opacity: 0;
+    }
+
+    3% {
+        opacity: 1;
+    }
+
+    97% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(calc(-100% - 100vw));
+        opacity: 0;
+    }
+}
+
+/* ============================
+   输入区域
+   ============================ */
+.danmaku-input-area {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.danmaku-input-group {
+    flex: 1;
+    display: flex;
+    gap: var(--space-sm);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-full);
+    padding: 6px 8px;
+    transition: border-color var(--transition-base);
+}
+
+.danmaku-input-group:focus-within {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.1);
+}
+
+.danmaku-nick-input {
+    width: 90px;
+    background: rgba(255, 255, 255, 0.06);
+    border: none;
+    border-radius: var(--radius-full);
+    padding: 8px 14px;
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    outline: none;
+    flex-shrink: 0;
+}
+
+.danmaku-nick-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.danmaku-msg-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 8px 12px;
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    outline: none;
+    min-width: 0;
+}
+
+.danmaku-msg-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.danmaku-send-btn {
+    flex-shrink: 0;
+    padding: 10px 24px;
+    background: var(--accent-gradient);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-full);
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+}
+
+.danmaku-send-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
+}
+
+.danmaku-send-btn:active {
+    transform: translateY(0);
+}
+
+/* 发送成功提示 */
+.danmaku-toast {
+    position: fixed;
+    top: calc(var(--nav-height) + 16px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: rgba(16, 185, 129, 0.9);
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+}
+
+.danmaku-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* 弹幕统计 */
+.danmaku-stats {
+    text-align: center;
+    margin-top: var(--space-md);
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+}
+
+.danmaku-stats span {
+    color: var(--accent-secondary);
+    font-weight: 600;
+}
+
+/* ============================
+   响应式
+   ============================ */
+@media (max-width: 768px) {
+    .danmaku-stage {
+        height: 280px;
+        border-radius: var(--radius-md);
+    }
+
+    .danmaku-input-area {
+        flex-direction: column;
+    }
+
+    .danmaku-input-group {
+        width: 100%;
+        border-radius: var(--radius-md);
+    }
+
+    .danmaku-nick-input {
+        width: 80px;
+    }
+
+    .danmaku-send-btn {
+        width: 100%;
+        border-radius: var(--radius-md);
+        padding: 12px;
+    }
+
+    .danmaku-item {
+        font-size: var(--text-xs);
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .danmaku-stage {
+        height: 220px;
+    }
+}
