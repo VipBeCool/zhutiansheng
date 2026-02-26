@@ -222,7 +222,7 @@
 
         // 绘制标签
         function drawLabels() {
-            ctx.font = '13px Inter, sans-serif';
+            ctx.font = '15px Inter, sans-serif';
             ctx.fillStyle = 'rgba(240, 240, 245, 0.7)';
             ctx.textAlign = 'center';
 

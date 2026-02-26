@@ -225,6 +225,23 @@
     align-items: center;
 }
 
+/* 工作面/生活面正文与卡片的间距保持一致 */
+.about-work .about-content {
+    margin-top: 0;
+}
+
+/* 雷达图等比缩小 */
+.radar-chart {
+    max-width: 340px;
+    max-height: 340px;
+    margin: 0 auto;
+}
+
+.radar-chart canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 .about-heading {
     font-family: var(--font-display);
     font-size: var(--text-2xl);
@@ -327,15 +344,20 @@
     min-height: 900px;
 }
 
-/* 底部融合暗影遮罩，消除硬切割黑边（加大到 250px） */
+/* 底部融合暗影遮罩 — 多段渐变消除黑线 */
 #about::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 250px;
-    background: linear-gradient(to top, #080b12 0%, transparent 100%);
+    height: 300px;
+    background: linear-gradient(to top,
+            #080b12 0%,
+            #080b12 8%,
+            rgba(8, 11, 18, 0.85) 30%,
+            rgba(8, 11, 18, 0.4) 60%,
+            transparent 100%);
     pointer-events: none;
     z-index: 10;
 }
@@ -504,6 +526,45 @@
     transition: opacity 0.3s ease, transform 0.3s ease;
     position: relative;
     z-index: 2;
+}
+
+/* 子元素交错入场动画 */
+.about-face .stats-grid,
+.about-face .about-content,
+.about-face .about-text,
+.about-face .about-visual,
+.about-face .life-tags-cloud {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* 交错延时 */
+.about-face .stats-grid {
+    transition-delay: 0s;
+}
+
+.about-face .about-content {
+    transition-delay: 0.12s;
+}
+
+.about-face .about-text {
+    transition-delay: 0.15s;
+}
+
+.about-face .about-visual,
+.about-face .life-tags-cloud {
+    transition-delay: 0.25s;
+}
+
+/* 通过 JS 给 .about-face 添加 .face-visible 触发子元素入场 */
+.about-face.face-visible .stats-grid,
+.about-face.face-visible .about-content,
+.about-face.face-visible .about-text,
+.about-face.face-visible .about-visual,
+.about-face.face-visible .life-tags-cloud {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* 生活面的主体内容额外下压，平衡视觉 */

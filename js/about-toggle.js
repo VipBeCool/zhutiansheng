@@ -111,6 +111,9 @@ window.initAboutToggle = function () {
     container.appendChild(workFace);
     container.appendChild(lifeFace);
 
+    // 初始工作面显示子元素入场动画
+    workFace.classList.add('face-visible');
+
     // ========== 6. 切换逻辑 ==========
     var btns = section.querySelectorAll('.about-nav-btn');
     var currentFace = 'work';
@@ -132,6 +135,8 @@ window.initAboutToggle = function () {
         var fadeOut = face === 'life' ? workFace : lifeFace;
         var fadeIn = face === 'life' ? lifeFace : workFace;
 
+        // 先移除子元素入场状态
+        fadeOut.classList.remove('face-visible');
         fadeOut.style.opacity = '0';
         fadeOut.style.transform = 'translateY(15px)';
 
@@ -146,6 +151,10 @@ window.initAboutToggle = function () {
             requestAnimationFrame(function () {
                 fadeIn.style.opacity = '1';
                 fadeIn.style.transform = 'translateY(0)';
+                // 延迟添加 face-visible 触发子元素交错入场
+                setTimeout(function () {
+                    fadeIn.classList.add('face-visible');
+                }, 50);
             });
         }, 300);
     }
