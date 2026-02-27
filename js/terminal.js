@@ -80,11 +80,11 @@
             desc: '工作经历',
             run: (args) => {
                 const jobs = [
-                    { period: '2022.09 – 至今', company: '江苏省联合征信', role: '征信数据产品经理', highlight: 'AI Agent · 智能营销 · 流水分析' },
-                    { period: '2021.08 – 2022.09', company: '统信软件技术', role: '用户产品经理', highlight: 'UOS 生态 · OA 应用' },
+                    { period: '2022.09 – 至今', company: '江苏省联合征信有限公司', role: '征信数据产品经理', highlight: 'AI Agent · 智能营销 · 流水分析' },
+                    { period: '2021.08 – 2022.09', company: '统信软件技术有限公司', role: '用户产品经理', highlight: 'UOS 生态 · OA 应用' },
                     { period: '2016.03 – 2021.07', company: '京东科技 / 京东金融', role: '金融科技产品经理 P7', highlight: '千亿AUM · 银行精选 · 理财增长' },
-                    { period: '2014.09 – 2016.03', company: '宽连十方', role: '商业化产品经理', highlight: 'SaaS · 运营商项目' },
-                    { period: '2011.07 – 2014.09', company: '春宇/苏宁', role: '电商产品经理', highlight: '电商平台 · 供应链' }
+                    { period: '2014.09 – 2016.03', company: '宽连十方数字技术有限公司', role: '商业化产品经理', highlight: 'SaaS · 运营商项目' },
+                    { period: '2011.07 – 2014.09', company: '春宇数字科技 / 苏宁易购', role: '电商产品经理', highlight: '电商平台 · 供应链' }
                 ];
 
                 if (args === '--latest' || args === '-l') {
@@ -121,13 +121,16 @@
                 '  <span class="cmd-text">[2]</span> 智能营销平台',
                 '      数据+AI驱动 | 月匹配客户 2W 家',
                 '',
-                '  <span class="cmd-text">[3]</span> AI 客服 "苏晓惠"',
+                '  <span class="cmd-text">[3]</span> 企空壳风险评级模型',
+                '      关系图谱 + 多源数据 | 准确率↑31%',
+                '',
+                '  <span class="cmd-text">[4]</span> AI 客服 "苏晓惠"',
                 '      RAG + SFT微调 | 满意度↑50%',
                 '',
-                '  <span class="cmd-text">[4]</span> "银行精选" F2B2C 存款平台',
+                '  <span class="cmd-text">[5]</span> "银行精选" F2B2C 存款平台',
                 '      AUM 2000亿 | 持仓户 400万 | 日GMV 15亿',
                 '',
-                '  <span class="cmd-text">[5]</span> "固收+"理财增长',
+                '  <span class="cmd-text">[6]</span> "固收+"理财增长',
                 '      渗透率↑70% | 导流 160W 用户',
                 ''
             ]
