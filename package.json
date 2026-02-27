@@ -1,0 +1,24 @@
+{
+  "name": "zhutiansheng",
+  "version": "1.0.0",
+  "description": "",
+  "main": "process_logo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VipBeCool/zhutiansheng.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/VipBeCool/zhutiansheng/issues"
+  },
+  "homepage": "https://github.com/VipBeCool/zhutiansheng#readme",
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
+}
