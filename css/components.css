@@ -182,38 +182,47 @@
 .bento-card .card-description {
     font-size: var(--text-sm);
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    margin-bottom: 24px;
 }
 
-/* 卡片颜色变体 */
+/* 卡片 Icon 颜色变体及明显衬底效果 */
 .bento-card.card-blue .card-icon {
-    background: rgba(79, 70, 229, 0.15);
+    background: rgba(79, 70, 229, 0.25);
+    border: 1px solid rgba(79, 70, 229, 0.3);
     color: var(--accent-primary);
 }
 
 .bento-card.card-cyan .card-icon {
-    background: rgba(6, 182, 212, 0.15);
+    background: rgba(6, 182, 212, 0.25);
+    border: 1px solid rgba(6, 182, 212, 0.3);
     color: var(--accent-secondary);
 }
 
 .bento-card.card-amber .card-icon {
-    background: rgba(245, 158, 11, 0.15);
+    background: rgba(245, 158, 11, 0.25);
+    border: 1px solid rgba(245, 158, 11, 0.3);
     color: var(--color-amber);
 }
 
 .bento-card.card-emerald .card-icon {
-    background: rgba(16, 185, 129, 0.15);
+    background: rgba(16, 185, 129, 0.25);
+    border: 1px solid rgba(16, 185, 129, 0.3);
     color: var(--color-emerald);
 }
 
 .bento-card.card-rose .card-icon {
-    background: rgba(244, 63, 94, 0.15);
+    background: rgba(244, 63, 94, 0.25);
+    border: 1px solid rgba(244, 63, 94, 0.3);
     color: var(--color-rose);
 }
 
+.bento-card.card-purple .card-icon,
 .bento-card.card-violet .card-icon {
-    background: rgba(139, 92, 246, 0.15);
-    color: var(--color-violet);
+    background: rgba(168, 85, 247, 0.25);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: var(--color-purple, #A855F7);
 }
 
 /* ============================
@@ -301,6 +310,25 @@
     background: rgba(16, 185, 129, 0.12);
     color: var(--color-emerald);
     border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* 补全缺失的技术栈 Tag 色彩变体 */
+.tag-blue {
+    background: rgba(59, 130, 246, 0.12);
+    color: #3B82F6;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.tag-purple {
+    background: rgba(168, 85, 247, 0.12);
+    color: #A855F7;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.tag-rose {
+    background: rgba(244, 63, 94, 0.12);
+    color: var(--color-rose);
+    border: 1px solid rgba(244, 63, 94, 0.2);
 }
 
 /* ============================

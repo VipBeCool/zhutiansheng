@@ -578,6 +578,101 @@
     margin-top: 60px;
 }
 
+/* 生活面社交链接胶囊 (极客风发光) */
+.life-social-links {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.social-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14.5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover 发光特效基座 */
+.social-pill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    pointer-events: none;
+    background: inherit;
+    border-radius: inherit;
+}
+
+.social-pill svg,
+.social-pill::after {
+    /* 确保文案在光晕上方 */
+    position: relative;
+    z-index: 1;
+}
+
+/* 各平台专属发光色 */
+.pill-github:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.pill-github:hover::before {
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+.pill-bilibili:hover {
+    border-color: rgba(251, 114, 153, 0.6);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(251, 114, 153, 0.3);
+    transform: translateY(-2px);
+}
+
+.pill-bilibili:hover::before {
+    box-shadow: inset 0 0 20px rgba(251, 114, 153, 0.15);
+    opacity: 1;
+}
+
+.pill-bilibili svg {
+    color: #fb7299;
+}
+
+.pill-axureshop:hover {
+    border-color: rgba(6, 182, 212, 0.6);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+    transform: translateY(-2px);
+}
+
+.pill-axureshop:hover::before {
+    box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.15);
+    opacity: 1;
+}
+
+.pill-axureshop svg {
+    color: #06b6d4;
+}
+
 /* section-header 也需要层级 */
 #about .section-header {
     position: relative;
@@ -1101,4 +1196,155 @@
     font-size: 11px;
     color: rgba(255, 255, 255, 0.4);
     margin-top: 2px;
+}
+
+/* =========================================
+   技能矩阵改版：业务 vs 专业技能的双栏布局
+   ========================================= */
+
+/* =========================================
+   Apple-Style 技能矩阵 Tab
+   ========================================= */
+
+.apple-tabs-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.apple-tabs-container {
+    position: relative;
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 6px;
+}
+
+.apple-tab {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 32px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    outline: none;
+}
+
+.apple-tab.active {
+    color: var(--text-primary);
+}
+
+.apple-tab-indicator {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    height: calc(100% - 12px);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 100px;
+    z-index: 1;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.skills-panes-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.skills-pane {
+    display: none;
+    width: 100%;
+    animation: fadeSlideUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.skills-pane.active {
+    display: block;
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 小标题风格 */
+.skills-subheading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.5px;
+}
+
+/* 业务与技术卡片通用阵列布局 */
+.bento-grid-1,
+.bento-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+/* 对技术卡片单独补偿，如果需要也可以直接放里面 
+但前文只有 grid-auto-rows: minmax(140px, auto); 现将其移除也不影响 */
+
+.bento-grid-1 .bento-card,
+.bento-grid-2 .bento-card {
+    min-height: auto;
+    padding: 18px;
+}
+
+.bento-grid-1 .bento-card .card-icon,
+.bento-grid-2 .bento-card .card-icon {
+    margin-bottom: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.bento-grid-1 .bento-card .card-title,
+.bento-grid-2 .bento-card .card-title {
+    margin-bottom: 4px;
+    font-size: 1.1rem;
+}
+
+.bento-grid-1 .bento-card .card-description,
+.bento-grid-2 .bento-card .card-description {
+    margin-bottom: 14px;
+    font-size: 0.85rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 992px) {
+
+    .bento-grid-1,
+    .bento-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .bento-grid-1,
+    .bento-grid-2 {
+        grid-template-columns: 1fr;
+    }
 }

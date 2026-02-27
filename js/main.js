@@ -54,6 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
         window.initAboutToggle();
     }
 
+    // 初始化 Apple-Style技能矩阵 Tab
+    initAppleTabs();
+
     // 页面加载完成标记
     document.body.classList.add('loaded');
 
@@ -76,3 +79,58 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('%c本站由产品经理独立设计与开发 · 按 Ctrl+` 打开终端彩蛋',
         'color: #06B6D4; font-size: 12px;');
 });
+
+/**
+ * 初始化 Apple-Style 技能矩阵 Tab
+ */
+function initAppleTabs() {
+    const tabs = document.querySelectorAll('.apple-tab');
+    const indicator = document.getElementById('skills-tab-indicator');
+    const panes = document.querySelectorAll('.skills-pane');
+
+    if (!tabs.length || !indicator) return;
+
+    // 更新指示器位置与大小的辅助函数
+    function updateIndicator(activeTab) {
+        // 获取当前 Tab 和父容器的物理尺寸与偏移
+        const tabRect = activeTab.getBoundingClientRect();
+        const containerRect = activeTab.parentElement.getBoundingClientRect();
+
+        // 计算相对于父容器的左偏差
+        const offsetLeft = tabRect.left - containerRect.left;
+        const width = tabRect.width;
+
+        indicator.style.width = `${width}px`;
+        indicator.style.transform = `translateX(${offsetLeft}px)`;
+    }
+
+    // 初始化加载时，定位指示器到当前 active 的 tab
+    const activeTab = document.querySelector('.apple-tab.active') || tabs[0];
+    // 延迟以确保字体和布局渲染完毕能拿到精确宽度
+    setTimeout(() => {
+        updateIndicator(activeTab);
+    }, 150);
+
+    // 绑定点击交互事件
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // 1. 改变文字高亮层级
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+
+            // 2. 调度胶囊指示器产生位移过渡
+            updateIndicator(this);
+
+            // 3. 交换下方展示的技能面板，并通过 active 触发淡入上浮动画
+            const targetId = this.getAttribute('data-target');
+            panes.forEach(pane => {
+                pane.classList.remove('active');
+                if (pane.id === targetId) {
+                    pane.classList.add('active');
+                }
+            });
+        });
+    });
+}
